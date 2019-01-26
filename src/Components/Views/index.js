@@ -1,5 +1,7 @@
-import HeaderView from './HeaderView';
+import ScreenView from './ScreenView';
+import VideoView from './VideoView';
 
 export {
-  HeaderView,
+  ScreenView,
+  VideoView,
 }
