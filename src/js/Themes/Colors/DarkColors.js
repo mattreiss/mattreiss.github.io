@@ -4,9 +4,9 @@ import DefaultColors from './DefaultColors';
 let Colors = Object.assign({}, DefaultColors);
 
 // constant colors
-// Colors.primary = Colors.rgb(10,150,200);
-// Colors.danger = Colors.rgb(220,130,30);
-// Colors.success = Colors.rgb(10,120,240);
+Colors.primary = Colors.rgb(10,150,200);
+Colors.danger = Colors.rgb(220,130,30);
+Colors.success = Colors.rgb(10,120,240);
 Colors.negative = Colors.gray(64);
 Colors.dark = Colors.gray(32);
 Colors.light = Colors.gray(128);

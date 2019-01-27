@@ -1,17 +1,17 @@
 import * as Colors from './Colors';
-import * as Images from './Images';
+import * as Styles from './Styles';
 
 let Theme = {
-  colors: 'DefaultColors',
-  images: 'DefaultImages'
+  colors: 'DarkColors',
+  styles: 'DefaultStyles'
 };
 
 Theme.getColors = () => {
   return Colors[Theme.colors];
 }
 
-Theme.getImages = () => {
-  return Images[Theme.images];
+Theme.getStyles = () => {
+  return Styles[Theme.styles];
 }
 
 Theme.setTheme = (obj) => {
