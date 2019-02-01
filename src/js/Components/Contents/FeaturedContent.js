@@ -1,51 +1,59 @@
 import React, { Component } from 'react';
 import { Images } from '../../Constants';
 import Theme from '../../Themes';
-import { ScreenView } from '../Views';
 
 
 class FeaturedContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      marginLeft: 0,
+      marginTop: 0,
       width:  window.innerWidth,
       height: window.innerHeight,
       imageIndex: 0,
     }
   }
 
-  /**
-  * Calculate & Update state of new dimensions
-  */
-  updateDimensions() {
+  updateDimensions = () => {
+    if (!this.aspectRatio) return;
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    let { width, height, marginLeft, marginTop } = this.state;
+
+    width = w;
+    height = w * this.aspectRatio;
+    if (height < h) {
+      width = h / this.aspectRatio;
+      height = h;
+      marginLeft = -0.5 * Math.abs(width - w);
+      marginTop = 0;
+    } else {
+      marginLeft = 0;
+      marginTop = -0.5 * Math.abs(height - h);
+    }
+
+    this.setState({ width, height, marginLeft, marginTop });
+  }
+
+  onLoadImage = () => {
+    let { imageIndex } = this.state;
     let img = new Image();
     img.onload = () => {
-      let w = window.innerWidth;
-      let h = window.innerHeight;
-      console.log("window dimensions", w, h);
-      console.log("img dimensions", img.width, img.height);
-      let dw = Math.abs(w - img.width);
-      let dh = Math.abs(h - img.height);
-      if (dw < dh) {
-        h = w * img.height / img.width;
-      } else {
-        w = h * img.width / img.height;
-      }
-      this.setState({
-        width: w,
-        height: h,
-      })
+        this.aspectRatio = img.height / img.width;
+        // console.log("onload", this.aspectRatio);
+        this.updateDimensions();
     }
-    img.src = this.img.src;
+    img.src = Images.list[imageIndex];
   }
 
   componentDidMount() {
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
+    window.addEventListener("resize", this.updateDimensions);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   onClickImage = () => {
@@ -58,13 +66,22 @@ class FeaturedContent extends Component {
   }
 
   render() {
-    let { width, height, imageIndex } = this.state;
+    let {
+      width,
+      height,
+      marginLeft,
+      marginTop,
+      imageIndex
+    } = this.state;
     return (
       <div style={Theme.getStyles().FeaturedContent()}>
         <img
           ref={(ref) => this.img = ref}
           src={Images.list[imageIndex]}
+          alt=""
           onClick={this.onClickImage}
+          onLoad={this.onLoadImage}
+          style={{ marginLeft, marginTop }}
           width={width}
           height={height} />
       </div>

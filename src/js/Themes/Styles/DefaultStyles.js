@@ -18,7 +18,7 @@ Styles._set('margin', 8);
 Styles._set('padding', 8);
 Styles._set('borderRadius', 8);
 Styles._set('fontSize', 16);
-Styles._set('buttonWidth', 100);
+Styles._set('buttonWidth', 120);
 Styles._set('buttonHeight', 20);
 
 
@@ -39,10 +39,32 @@ Styles.MenuContent= () => ({
 });
 
 Styles.FeaturedContent= () => ({
-  backgroundColor: Theme.getColors().primary,
+  backgroundColor: Theme.getColors().defaultBackground,
   width: '100%',
   height: '100%',
   overflow: 'hidden',
+});
+
+Styles.LibraryContent= () => ({
+  backgroundColor: Theme.getColors().defaultBackground,
+  width: '100%',
+});
+
+Styles.LibraryTitle = () => ({
+  padding: Styles.margin.m,
+  fontSize: Styles.fontSize.m,
+});
+
+Styles.LibraryGrid = () => ({
+  width: '100%',
+});
+
+Styles.LibraryItem = (size) => ({
+  backgroundColor: Theme.getColors().primary,
+  display: 'inline-block',
+  width: size || Styles.buttonWidth.l,
+  height: size || Styles.buttonWidth.l,
+  overflow: 'hidden'
 });
 
 // Views

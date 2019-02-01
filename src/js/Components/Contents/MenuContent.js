@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Images } from '../../Constants';
+// import { Images } from '../../Constants';
 import Theme from '../../Themes';
 
 class MenuContent extends Component {
