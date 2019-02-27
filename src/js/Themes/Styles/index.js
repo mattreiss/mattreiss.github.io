@@ -1,7 +1,9 @@
 import DefaultStyles from './DefaultStyles';
-import SimpleStyles from './SimpleStyles';
+import MobileStyles from './MobileStyles';
+import TabletStyles from './TabletStyles';
 
 export {
   DefaultStyles,
-  SimpleStyles
+  MobileStyles,
+  TabletStyles
 }

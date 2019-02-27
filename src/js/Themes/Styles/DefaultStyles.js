@@ -2,24 +2,23 @@ import Theme from '../../Themes';
 
 let Styles = {};
 
+Styles._scale = (v) => ({
+  xxs: v / 4,
+  xs: v / 3,
+  s: v / 2,
+  m: v * 2,
+  l: v * 3,
+  xl: v * 4,
+  xxl: v * 5,
+});
+
 // Metrics
-Styles._set = (k, v) => {
-  Styles[k] = {
-    xxs: v / 4,
-    xs: v / 3,
-    s: v / 2,
-    m: v * 2,
-    l: v * 3,
-    xl: v * 4,
-    xxl: v * 5,
-  }
-}
-Styles._set('margin', 8);
-Styles._set('padding', 8);
-Styles._set('borderRadius', 8);
-Styles._set('fontSize', 16);
-Styles._set('buttonWidth', 120);
-Styles._set('buttonHeight', 20);
+Styles.margin = Styles._scale(8);
+Styles.padding = Styles._scale(8);
+Styles.borderRadius = Styles._scale(8);
+Styles.fontSize = Styles._scale(16);
+Styles.buttonWidth = Styles._scale(120);
+Styles.buttonHeight = Styles._scale(20);
 
 
 // Screens
@@ -51,19 +50,19 @@ Styles.LibraryContent= () => ({
 });
 
 Styles.LibraryTitle = () => ({
-  padding: Styles.margin.m,
+  backgroundColor: Theme.getColors().headerBackground,
+  color: Theme.getColors().headerText,
+  padding: Styles.margin.xl,
   fontSize: Styles.fontSize.m,
 });
 
 Styles.LibraryGrid = () => ({
   width: '100%',
+  fontSize: 0,
 });
 
-Styles.LibraryItem = (size) => ({
-  backgroundColor: Theme.getColors().primary,
+Styles.LibraryItem = () => ({
   display: 'inline-block',
-  width: size || Styles.buttonWidth.l,
-  height: size || Styles.buttonWidth.l,
   overflow: 'hidden'
 });
 
@@ -80,8 +79,14 @@ Styles.ScreenView = () => ({
   overflowX: 'hidden',
 });
 
-Styles.FilmStripView = () => ({
-  backgroundColor: Theme.getColors().defaultBackground,
+Styles.ImageViewContainer = (styles) => ({
+  ...styles,
+
+});
+
+Styles.ImageView = (styles) => ({
+  ...styles,
+
 });
 
 // Buttons

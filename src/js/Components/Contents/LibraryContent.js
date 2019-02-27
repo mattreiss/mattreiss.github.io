@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import { Images } from '../../Constants';
 import Theme from '../../Themes';
+import { ImageView } from '../Views';
 
 class LibraryContent extends Component {
 
-  onLoadImage = (src) => {
-    let img = new Image();
-    img.onload = () => {
-        this.aspectRatio = img.height / img.width;
-        // console.log("onload", this.aspectRatio, src);
-    }
-    img.src = src;
+  onclickImage = () => {
+
   }
 
   renderItem = (src) => {
-    let size = Theme.getStyles().buttonWidth.l;
     return (
-      <div key={src} style={Theme.getStyles().LibraryItem(size)}>
-        <img
-          src={src}
-          alt=""
-          onLoad={() => this.onLoadImage(src)}
-          height={size}
-        />
-      </div>
+      <ImageView
+        key={src}
+        src={src}
+        style={Theme.getStyles().LibraryItem()}
+        onClick={this.onClickImage}
+        scale={3}
+        isSquare={true}
+      />
     )
   }
 

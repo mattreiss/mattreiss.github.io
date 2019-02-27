@@ -2,7 +2,7 @@ import * as Colors from './Colors';
 import * as Styles from './Styles';
 
 let Theme = {
-  colors: 'DarkColors',
+  colors: 'DefaultColors',
   styles: 'DefaultStyles'
 };
 

@@ -11,7 +11,6 @@ class MainScreen extends Component {
   render() {
     return (
       <ScreenView>
-        <MenuContent />
         <FeaturedContent />
         <LibraryContent />
       </ScreenView>
