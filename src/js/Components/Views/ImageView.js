@@ -77,6 +77,10 @@ class ImageView extends Component {
     if (!style) style = {};
     style.width = window.innerWidth / scale;
     style.height = style.width;
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ')';
     return (
       <div
         ref={(ref) => this.container = ref}

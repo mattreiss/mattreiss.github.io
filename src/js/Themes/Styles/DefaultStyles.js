@@ -77,6 +77,7 @@ Styles.ScreenView = () => ({
   left: 0,
   overflowY: 'scroll',
   overflowX: 'hidden',
+  textAlign: 'center'
 });
 
 Styles.ImageViewContainer = (styles) => ({

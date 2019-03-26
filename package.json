@@ -4,9 +4,19 @@
   "private": true,
   "homepage": "http://mattreiss.github.io/portfolio",
   "dependencies": {
+    "apisauce": "^1.0.2",
+    "js-logger": "^1.6.0",
+    "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "^2.1.5"
+    "react-redux": "^6.0.1",
+    "react-scripts": "^2.1.5",
+    "react-spring": "^8.0.18",
+    "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
+    "redux-saga": "^1.0.2",
+    "reduxsauce": "^1.0.1",
+    "seamless-immutable": "^7.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

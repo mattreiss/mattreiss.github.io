@@ -9,17 +9,17 @@ import {
 import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 
-class MainScreen extends React.Component {
+class ContentScreen extends React.Component {
 
   onClick = () => {
-    this.props.showScreen('ContentScreen');
+    this.props.showScreen('MainScreen');
   }
 
   render() {
     return (
       <ScreenView>
         <div onClick={this.onClick}>
-          Main Screen
+          Content Screen
         </div>
       </ScreenView>
     );
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(ContentScreen)
