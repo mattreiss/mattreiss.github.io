@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { MainActions } from '../../Redux/Actions';
 // import { Images } from '../../Constants';
@@ -11,7 +12,7 @@ class MenuContent extends Component {
   }
 
   onClickMenuItem = (item) => {
-    this.props.showScreen(item);
+    // this.props.showScreen(item);
     this.setState({showMenu: false})
   }
 
@@ -19,17 +20,19 @@ class MenuContent extends Component {
     let { screen } = this.props.main;
     let isActive = screen == item;
     return (
-      <div onClick={() => this.onClickMenuItem(item)}>
-        {item}
-      </div>
+      <Link to={'/' + item}>
+        <div onClick={() => this.onClickMenuItem(item)}>
+         {item}
+        </div>
+      </Link>
     )
   }
 
   renderMenu() {
     return (
       <div style={Theme.getStyles().MenuContent()}>
-        {this.renderMenuItem('MainScreen')}
-        {this.renderMenuItem('ContentScreen')}
+        {this.renderMenuItem('main')}
+        {this.renderMenuItem('content')}
       </div>
     )
   }

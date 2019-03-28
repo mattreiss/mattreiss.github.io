@@ -73,7 +73,7 @@ Styles.ScreenView = () => ({
   width: '100%',
   height: '100%',
   position: 'fixed',
-  top: 0,
+  top: 64,
   left: 0,
   overflowY: 'scroll',
   overflowX: 'hidden',

@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { store, persistor } from './Redux';
-import { Navigators } from './Components';
+import { ScreenNavigator } from './Components/Navigators';
 import { SetupLogger } from "./Tools";
 import '../css/App.css';
 
@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <PersistGate loading={this.renderLoading()} persistor={persistor}>
-          <Navigators.ScreenNavigator />
+          <ScreenNavigator />
         </PersistGate>
       </Provider>
     )

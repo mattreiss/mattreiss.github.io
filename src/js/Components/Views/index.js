@@ -3,6 +3,7 @@ import ImageView from './ImageView';
 import VideoView from './VideoView';
 import ContentView from './ContentView';
 import FilmStripView from './FilmStripView';
+import AppBarView from './AppBarView';
 
 export {
   ScreenView,
@@ -10,4 +11,5 @@ export {
   VideoView,
   ContentView,
   FilmStripView,
+  AppBarView,
 }

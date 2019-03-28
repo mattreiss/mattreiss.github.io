@@ -1,30 +1,26 @@
 import React from 'react';
+import { Route, HashRouter, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { MainActions } from '../../Redux/Actions';
 import Theme from '../../Themes';
 import * as Screens from '../Screens';
-import * as Contents from '../Contents';
+import { AppBarView } from '../Views';
 
 class ScreenNavigator extends React.Component {
-
-  renderScreen() {
-    let { screen } = this.props.main;
-    switch (screen) {
-      case 'ContentScreen': return <Screens.ContentScreen />;
-      case 'MainScreen':
-      default: return <Screens.MainScreen />;
-    }
-  }
-
   render() {
     return (
       <div>
-        {this.renderScreen()}
-        <Contents.MenuContent />
+        <HashRouter>
+          <AppBarView />
+          <Switch>
+            <Route exact path='/' component={ Screens.MainScreen } />
+            <Route exact path='/main' component={ Screens.MainScreen } />
+            <Route exact path='/content' component={ Screens.ContentScreen } />
+          </Switch>
+        </HashRouter>
       </div>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
