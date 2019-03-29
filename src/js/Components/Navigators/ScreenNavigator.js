@@ -53,13 +53,13 @@ class ScreenNavigator extends React.Component {
     Menu.forEach((item, index) => {
       routes.push(
         <Route exact key={index}
-          path={item.pathname}
-          component={ Screens[item.componentname] } />
+          path={item.path}
+          component={ Screens[item.screen] } />
       )
       listItems.push(
         <ListItem button
           component={Link}
-          to={{pathname: item.pathname}}
+          to={{pathname: item.path}}
           onClick={this.menuClose}
           key={item.label}>
           <ListItemText primary={item.label} />

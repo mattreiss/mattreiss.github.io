@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
-import { Images } from '../../Constants';
+import { withRouter } from 'react-router';
+import { Posts } from '../../Constants';
 import Theme from '../../Themes';
 import { ImageView } from '../Views';
 
 class FeaturedContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imageIndex: 0,
-    }
-  }
 
   onClickImage = () => {
-    let { imageIndex } = this.state;
-    imageIndex++;
-    if (Images.list.length <= imageIndex) {
-      imageIndex = 0;
-    }
-    this.setState({ imageIndex });
+    console.log("go to post #", Posts.featured)
+    this.props.history.push('/post/' + Posts.featured);
   }
 
   render() {
-    let {
-      imageIndex
-    } = this.state;
+    let featuredPost = Posts[Posts.featured];
     return (
       <div style={Theme.getStyles().FeaturedContent()}>
         <ImageView
-          src={Images.list[imageIndex]}
+          src={featuredPost.img}
           onClick={this.onClickImage}
           scale={1}
         />
@@ -36,4 +25,4 @@ class FeaturedContent extends Component {
   }
 }
 
-export default FeaturedContent;
+export default withRouter(FeaturedContent);
