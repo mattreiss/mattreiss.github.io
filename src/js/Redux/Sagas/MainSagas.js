@@ -1,6 +1,6 @@
-import { put, call, all } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 import Logger from 'js-logger';
-import { Api, Translator } from '../../Tools';
+import { Api } from '../../Tools';
 import { MainActions } from '../Actions';
 
 export const init = function * init() {

@@ -25,9 +25,6 @@ class LibraryContent extends Component {
   render() {
     return (
       <div style={Theme.getStyles().LibraryContent()}>
-        <div style={Theme.getStyles().LibraryTitle()}>
-          Library
-        </div>
         <div style={Theme.getStyles().LibraryGrid()}>
             {Images.list.map(this.renderItem)}
         </div>

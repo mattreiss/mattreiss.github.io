@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { ScreenView } from '../Views';
 import {
   FeaturedContent,
-  MenuContent,
   LibraryContent
 } from '../Contents';
 import { MainActions } from '../../Redux/Actions';
@@ -18,9 +17,8 @@ class MainScreen extends React.Component {
   render() {
     return (
       <ScreenView>
-        <div onClick={this.onClick}>
-          Main Screen
-        </div>
+        <FeaturedContent />
+        <LibraryContent />
       </ScreenView>
     );
   }

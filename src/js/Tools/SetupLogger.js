@@ -1,5 +1,5 @@
 import Logger from 'js-logger';
-import Api from './Api';
+// import Api from './Api';
 
 function init() {
   Logger.useDefaults({

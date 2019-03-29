@@ -66,6 +66,11 @@ Styles.LibraryItem = () => ({
   overflow: 'hidden'
 });
 
+
+Styles.AppBar = () => ({
+  backgroundColor: Theme.getColors().white
+});
+
 // Views
 Styles.ScreenView = () => ({
   backgroundColor: Theme.getColors().defaultBackground,
@@ -73,8 +78,9 @@ Styles.ScreenView = () => ({
   width: '100%',
   height: '100%',
   position: 'fixed',
-  top: 64,
+  top: 0,
   left: 0,
+  paddingTop: 64,
   overflowY: 'scroll',
   overflowX: 'hidden',
   textAlign: 'center'

@@ -42,7 +42,6 @@ class ImageView extends Component {
 
   onLoadImage = () => {
     let { src } = this.props;
-    let { imageIndex } = this.state;
     let img = new Image();
     img.onload = () => {
         this.aspectRatio = img.height / img.width;
@@ -71,8 +70,7 @@ class ImageView extends Component {
       width,
       height,
       marginLeft,
-      marginTop,
-      imageIndex
+      marginTop
     } = this.state;
     if (!style) style = {};
     style.width = window.innerWidth / scale;

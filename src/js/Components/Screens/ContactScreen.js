@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ScreenView } from '../Views';
-import {
-  FeaturedContent,
-  MenuContent,
-  LibraryContent
-} from '../Contents';
 import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 
-class ContentScreen extends React.Component {
+class ContactScreen extends React.Component {
 
   onClick = () => {
     this.props.showScreen('MainScreen');
@@ -19,7 +14,7 @@ class ContentScreen extends React.Component {
     return (
       <ScreenView>
         <div onClick={this.onClick}>
-          Content Screen
+          Contact Screen
         </div>
       </ScreenView>
     );
@@ -39,4 +34,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContentScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(ContactScreen)

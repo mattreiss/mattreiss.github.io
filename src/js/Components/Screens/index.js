@@ -1,7 +1,7 @@
 import MainScreen from './MainScreen';
-import ContentScreen from './ContentScreen';
+import ContactScreen from './ContactScreen';
 
 export {
   MainScreen,
-  ContentScreen
+  ContactScreen
 }
