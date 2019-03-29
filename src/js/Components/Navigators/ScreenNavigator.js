@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { connect } from 'react-redux';
 import { MainActions } from '../../Redux/Actions';
-import { Menu } from '../../Constants';
+import { Menu, Posts } from '../../Constants';
 import Theme from '../../Themes';
 import * as Screens from '../Screens';
 
@@ -66,6 +66,13 @@ class ScreenNavigator extends React.Component {
         </ListItem>
       )
     })
+    for (let i = Posts.featured; i >= 0; i--) {
+      routes.push(
+        <Route exact key={i}
+          path={"/post/" + i}
+          component={ Screens.PostScreen } />
+      )
+    }
     return (
       <HashRouter>
         <Switch>{routes}</Switch>

@@ -3,6 +3,9 @@ let Posts = {
   0: {
     title: 'Panther Beach',
     img: "https://drscdn.500px.org/photo/62650705/q%3D80_m%3D1500/v2?user_id=4438962&webp=true&sig=bbd87170c591331b79966d23b9d77428563ce33ae41b75670d7f30ee58b3caaf",
+    contents: [
+      "PantherBeachContent"
+    ]
   },
   1: {
     title: 'Deer',

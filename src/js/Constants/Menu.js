@@ -1,5 +1,3 @@
-import Posts from './Posts';
-
 let Menu = [
   {
     label: "Home",
@@ -12,14 +10,5 @@ let Menu = [
     screen: "ContactScreen"
   }
 ];
-
-for (let i = Posts.featured; i >= 0; i--) {
-  let post = Posts[i];
-  Menu.push({
-    label: post.title,
-    path: "/post/" + i,
-    screen: "PostScreen"
-  })
-}
 
 export default Menu;
