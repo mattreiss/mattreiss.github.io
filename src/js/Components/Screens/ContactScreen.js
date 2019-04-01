@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ScreenView } from '../Views';
 import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
+import { ScreenView } from '../Views';
 
 class ContactScreen extends React.Component {
 

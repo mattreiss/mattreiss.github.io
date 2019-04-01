@@ -1,9 +1,7 @@
-import FeaturedContent from './FeaturedContent';
-import LibraryContent from './LibraryContent';
 import PantherBeachContent from './PantherBeachContent';
+import BayBridgeContent from './BayBridgeContent';
 
 export {
-  FeaturedContent,
-  LibraryContent,
-  PantherBeachContent
+  PantherBeachContent,
+  BayBridgeContent
 }

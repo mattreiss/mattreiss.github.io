@@ -1,5 +1,7 @@
+import BayBridge from '../../assets/m4v/bay-bridge.m4v';
+
 let Posts = {
-  featured: 3,
+  featured: 4,
   0: {
     title: 'Panther Beach',
     img: "https://drscdn.500px.org/photo/62650705/q%3D80_m%3D1500/v2?user_id=4438962&webp=true&sig=bbd87170c591331b79966d23b9d77428563ce33ae41b75670d7f30ee58b3caaf",
@@ -18,6 +20,13 @@ let Posts = {
   3: {
     title: 'Smores',
     img:   "https://drscdn.500px.org/photo/74312919/q%3D80_m%3D1000/v2?user_id=4438962&webp=true&sig=a8cbd53b6e9de68d0345b4859fe977c883334f648f033b2775bbcb59648ad970",
+  },
+  4: {
+    title: 'Bay Bridge',
+    video: BayBridge,
+    contents: [
+      "BayBridgeContent"
+    ]
   }
 }
 

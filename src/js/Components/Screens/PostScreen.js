@@ -25,10 +25,20 @@ class PostScreen extends React.Component {
     return (
       <ScreenView>
         <h1>{post.title}</h1>
-        <img alt=""
-          src={post.img}
-          width="100%"
-        />
+        {post.img ? (
+          <img alt=""
+            src={post.img}
+            width="100%"
+          />
+        ) : (
+          <video
+            width="100%"
+            ref={(ref) => this.video = ref}
+            autoPlay="autoplay" loop>
+              <source src={post.video} type="video/mp4" />
+              Your browser does not support the video tag.
+          </video>
+        )}
         {post.contents && post.contents.map(contentName => {
           let Content = Contents[contentName];
           if (!this.key) this.key = 0;
