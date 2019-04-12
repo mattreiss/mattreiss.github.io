@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Theme from '../../Themes';
 import { Posts } from '../../Constants';
-import { ScreenView, ImageView, VideoView } from '../Views';
+import { ScreenView, MediaView } from '../Views';
 import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 
@@ -17,19 +17,11 @@ class MainScreen extends React.Component {
     let featuredPost = Posts[i];
     return (
       <div style={Theme.getStyles().FeaturedContent()}>
-        {featuredPost.img ? (
-          <ImageView
-            src={featuredPost.img}
-            onClick={() => this.onClickPost(i)}
-            scale={1}
-          />
-        ) : (
-          <VideoView
-            src={featuredPost.video}
-            onClick={() => this.onClickPost(i)}
-            scale={1}
-          />
-        )}
+        <MediaView
+          src={featuredPost.src}
+          onClick={() => this.onClickPost(i)}
+          scale={1}
+        />
       </div>
     );
   }
@@ -40,28 +32,20 @@ class MainScreen extends React.Component {
     while (Posts.featured % scale !== 0) scale++;
     for (let i = Posts.featured - 1; i >= 0; i--) {
       posts.push(
-        Posts[i].img ? (
-            <ImageView
-              key={i}
-              src={Posts[i].img}
-              style={Theme.getStyles().LibraryItem()}
-              onClick={() => this.onClickPost(i)}
-              scale={scale}
-              isSquare={true}
-            />
-        ) : (
-          <VideoView
-            src={Posts[i].video}
-            onClick={() => this.onClickPost(i)}
-            scale={1}
-          />
-        )
+        <MediaView
+          key={i}
+          src={Posts[i].src}
+          style={Theme.getStyles().LibraryItem()}
+          onClick={() => this.onClickPost(i)}
+          scale={scale}
+          isSquare={true}
+        />
       )
     }
     return (
       <div style={Theme.getStyles().LibraryContent()}>
         <div style={Theme.getStyles().LibraryGrid()}>
-            {posts}
+          {posts}
         </div>
       </div>
     );

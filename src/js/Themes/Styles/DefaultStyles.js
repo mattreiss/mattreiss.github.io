@@ -21,6 +21,18 @@ Styles.buttonWidth = Styles._scale(120);
 Styles.buttonHeight = Styles._scale(20);
 
 
+// animation
+Styles.fadeIn = () => ({
+   opacity: 1,
+   transition: 'opacity 0.5s 0.5s'
+})
+
+Styles.fadeOut = () => ({
+   opacity:0,
+   height:0,
+   transition: 'height 0.5s 0.5s, opacity 0.5s'
+})
+
 // Screens
 
 // Contents
@@ -66,9 +78,18 @@ Styles.LibraryItem = () => ({
   overflow: 'hidden'
 });
 
+Styles.AppBarContainer = () => ({
+  backgroundColor: Theme.getColors().transparent,
+  height: 56,
+  width: '100%',
+  position: 'fixed',
+  zIndex: 2
+});
 
 Styles.AppBar = () => ({
-  backgroundColor: Theme.getColors().white
+  backgroundColor: Theme.getColors().defaultBackground,
+  color: Theme.getColors().defaultText,
+  width: '100%',
 });
 
 // Views
@@ -80,7 +101,6 @@ Styles.ScreenView = () => ({
   position: 'fixed',
   top: 0,
   left: 0,
-  paddingTop: 56,
   overflowY: 'scroll',
   overflowX: 'hidden',
   textAlign: 'center'

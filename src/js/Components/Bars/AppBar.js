@@ -32,6 +32,14 @@ class MyAppBar extends React.Component {
     this.setState({ menuDrawer: false });
   }
 
+  onMouseEnter = () => {
+    this.setState({ showAppBar: true });
+  }
+
+  onMouseLeave = () => {
+    this.setState({ showAppBar: false });
+  }
+
   currentMenuItem = () => {
     console.log("this.props.history.location", this.props.history.location)
     for (let i in Menu) {
@@ -44,6 +52,7 @@ class MyAppBar extends React.Component {
   }
 
   render() {
+    let { showAppBar } = this.state;
     let menuItems = [];
     Menu.forEach((item, index) => {
       menuItems.push(
@@ -59,7 +68,9 @@ class MyAppBar extends React.Component {
     return (
       <AppBar
         style={Theme.getStyles().AppBar()}
-        color="default">
+        color="default"
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}>
         <MainToolBar
           currentMenuItem={this.currentMenuItem()}
           onClickMenu={this.menuOpen}
