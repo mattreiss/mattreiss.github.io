@@ -1,36 +1,48 @@
 import BayBridge from '../../assets/video/bay-bridge.mp4';
 import PantherBeach from '../../assets/video/panther-beach.m4v';
+import McwayFalls from '../../assets/video/mcway-falls.mp4';
+import Sunset from '../../assets/video/sunset.m4v';
+import Turtle from '../../assets/video/turtle.mp4';
 
 
 let Posts = {
-  featured: 5,
+  featured: 8,
   0: {
-    title: 'Panther Beach',
-    src: "https://drscdn.500px.org/photo/62650705/q%3D80_m%3D1500/v2?user_id=4438962&webp=true&sig=bbd87170c591331b79966d23b9d77428563ce33ae41b75670d7f30ee58b3caaf",
-    contents: [
-      "PantherBeachContent"
-    ]
+    title: 'Half Dome',
+    src:   "https://drscdn.500px.org/photo/111533197/q%3D80_m%3D2000/v2?webp=true&sig=6532ba5a6390b4745312ccbddafd961af59785bec7e697cf95f6c03b568d5e49",
   },
   1: {
-    title: 'Deer',
-    src:   "https://drscdn.500px.org/photo/72708255/q%3D80_m%3D1000/v2?user_id=4438962&webp=true&sig=83681fd8d1d54ed7a332e7598e0cd9b0a831490c41384c8ff49de51154d98ab0",
+    title: 'Golden Gate',
+    src:   "https://drscdn.500px.org/photo/287634029/q%3D80_m%3D2000/v2?webp=true&sig=0801750bed0baa3f7a9ea1dd3c38a57bde27774db05063d1af34f8daa2e26eeb",
   },
   2: {
-    title: 'Trees',
-    src:   "https://drscdn.500px.org/photo/72708261/q%3D80_m%3D1000/v2?user_id=4438962&webp=true&sig=fa19fc00005673ed7f0c66280c6146b0e9c6d3e9f27a328eadb38989af117c56",
+    title: 'Delicate Arch',
+    src:   "https://drscdn.500px.org/photo/297710733/q%3D80_m%3D2000/v2?webp=true&sig=892dc19c4e6b48811270c754acb4f9ac9cc875f04211bb99be685707636c4b08",
   },
   3: {
-    title: 'Smores',
-    src:   "https://drscdn.500px.org/photo/74312919/q%3D80_m%3D1000/v2?user_id=4438962&webp=true&sig=a8cbd53b6e9de68d0345b4859fe977c883334f648f033b2775bbcb59648ad970",
+    title: 'Badwater Basin',
+    src: "https://drscdn.500px.org/photo/296022367/q%3D80_m%3D2000/v2?webp=true&sig=7bd54f4179124eeaa23234114eab13e26a4bcd01743fe86cd4e9c8a432509b93",
   },
   4: {
+    title: 'Sunset',
+    src: Sunset
+  },
+  5: {
+    title: 'Turtle',
+    src: Turtle,
+  },
+  6: {
     title: 'Bay Bridge',
     src: BayBridge,
     contents: [
       "BayBridgeContent"
     ]
   },
-  5: {
+  7: {
+    title: 'Mcway Falls',
+    src: McwayFalls,
+  },
+  8: {
     title: 'Panther Beach',
     src: PantherBeach,
     contents: [
