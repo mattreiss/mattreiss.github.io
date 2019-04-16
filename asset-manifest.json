@@ -1,16 +1,19 @@
 {
   "main.css": "/static/css/main.241cf670.chunk.css",
-  "main.js": "/static/js/main.fab66aba.chunk.js",
-  "main.js.map": "/static/js/main.fab66aba.chunk.js.map",
+  "main.js": "/static/js/main.529fc8e6.chunk.js",
+  "main.js.map": "/static/js/main.529fc8e6.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.c5541365.js",
   "runtime~main.js.map": "/static/js/runtime~main.c5541365.js.map",
-  "static/js/2.4ea167e4.chunk.js": "/static/js/2.4ea167e4.chunk.js",
-  "static/js/2.4ea167e4.chunk.js.map": "/static/js/2.4ea167e4.chunk.js.map",
+  "static/js/2.a27537ae.chunk.js": "/static/js/2.a27537ae.chunk.js",
+  "static/js/2.a27537ae.chunk.js.map": "/static/js/2.a27537ae.chunk.js.map",
   "index.html": "/index.html",
-  "precache-manifest.ba8351ac55a3c14797e2035ce0f2df93.js": "/precache-manifest.ba8351ac55a3c14797e2035ce0f2df93.js",
+  "precache-manifest.844a23f03805a68ade239604ca63e7ce.js": "/precache-manifest.844a23f03805a68ade239604ca63e7ce.js",
   "service-worker.js": "/service-worker.js",
   "static/css/main.241cf670.chunk.css.map": "/static/css/main.241cf670.chunk.css.map",
   "static/media/bay-bridge.mp4": "/static/media/bay-bridge.c7ced7cf.mp4",
   "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
-  "static/media/panther-beach.m4v": "/static/media/panther-beach.d6b1f61d.m4v"
+  "static/media/mcway-falls.mp4": "/static/media/mcway-falls.bf45f931.mp4",
+  "static/media/panther-beach.m4v": "/static/media/panther-beach.d6b1f61d.m4v",
+  "static/media/sunset.m4v": "/static/media/sunset.e2b000f2.m4v",
+  "static/media/turtle.mp4": "/static/media/turtle.6cda64d7.mp4"
 }
