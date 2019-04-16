@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -b master -r git@github.com:mattreiss/mattreiss.github.io.git",
     "storybook": "start-storybook -p 9001 -c ./src/js/StoryBook -s ./src/assets",
     "build-storybook": "build-storybook -c ./src/js/StoryBook -s ./src/assets"
   },
