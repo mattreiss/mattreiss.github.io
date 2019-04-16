@@ -1,10 +1,8 @@
 import logo from '../../assets/svg/logo.svg';
-import tahoeLake from '../../assets/m4v/tahoe-lake.m4v';
 
 let Images = {};
 
 Images.logo = logo;
-Images.mainVideo = tahoeLake;
 
 Images.list = [
   "https://drscdn.500px.org/photo/62650705/q%3D80_m%3D1500/v2?user_id=4438962&webp=true&sig=bbd87170c591331b79966d23b9d77428563ce33ae41b75670d7f30ee58b3caaf",

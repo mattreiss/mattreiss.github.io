@@ -52,7 +52,7 @@ class MyAppBar extends React.Component {
   }
 
   render() {
-    let { showAppBar } = this.state;
+    // let { showAppBar } = this.state;
     let menuItems = [];
     Menu.forEach((item, index) => {
       menuItems.push(

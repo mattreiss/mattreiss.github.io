@@ -58,6 +58,7 @@ class VideoView extends Component {
         let height = this.video.videoHeight;
         this.aspectRatio = height / width;
         this.updateDimensions();
+        this.video.play();
     }, false );
   }
 
