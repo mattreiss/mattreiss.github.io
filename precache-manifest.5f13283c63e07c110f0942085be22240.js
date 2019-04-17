@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e9f4da056a1dea3dcd13",
+    "revision": "5233a1579010a87147ce",
     "url": "/static/css/main.241cf670.chunk.css"
   },
   {
-    "revision": "e9f4da056a1dea3dcd13",
-    "url": "/static/js/main.831d2152.chunk.js"
+    "revision": "5233a1579010a87147ce",
+    "url": "/static/js/main.410d4579.chunk.js"
   },
   {
     "revision": "fdfcfda2d9b1bf31db52",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/static/media/dunes.5e80123b.mp4"
   },
   {
-    "revision": "c6dc30b568b7db4b0333cd7b78662d07",
+    "revision": "310001b58d689c6b1b00deeb7d1c8fd1",
     "url": "/index.html"
   }
 ];
