@@ -3,6 +3,9 @@ import PantherBeach from '../../assets/video/panther-beach.m4v';
 import McwayFalls from '../../assets/video/mcway-falls.mp4';
 import Sunset from '../../assets/video/sunset.m4v';
 import Turtle from '../../assets/video/turtle.mp4';
+import BadwaterBasin from '../../assets/video/badwater-basin.m4v';
+import Dunes from '../../assets/video/dunes.mp4';
+
 
 
 let Posts = {
@@ -21,28 +24,32 @@ let Posts = {
   },
   3: {
     title: 'Badwater Basin',
-    src: "https://drscdn.500px.org/photo/296022367/q%3D80_m%3D2000/v2?webp=true&sig=7bd54f4179124eeaa23234114eab13e26a4bcd01743fe86cd4e9c8a432509b93",
+    src: BadwaterBasin,
   },
   4: {
+    title: 'Dunes',
+    src: Dunes,
+  },
+  5: {
     title: 'Sunset',
     src: Sunset
   },
-  5: {
+  6: {
     title: 'Turtle',
     src: Turtle,
   },
-  6: {
+  7: {
     title: 'Bay Bridge',
     src: BayBridge,
     contents: [
       "BayBridgeContent"
     ]
   },
-  7: {
+  8: {
     title: 'Mcway Falls',
     src: McwayFalls,
   },
-  8: {
+  9: {
     title: 'Panther Beach',
     src: PantherBeach,
     contents: [
