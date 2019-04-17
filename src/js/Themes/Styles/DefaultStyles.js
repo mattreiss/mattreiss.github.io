@@ -73,6 +73,15 @@ Styles.LibraryGrid = () => ({
   fontSize: 0,
 });
 
+Styles.LibraryItemTitle = () => ({
+  position: 'absolute',
+  fontSize: Styles.fontSize.m,
+  marginTop: -Styles.fontSize.l,
+  marginLeft: Styles.margin.m,
+  color: Theme.getColors().white,
+  zIndex: 100
+});
+
 Styles.LibraryItem = () => ({
   display: 'inline-block',
   overflow: 'hidden'

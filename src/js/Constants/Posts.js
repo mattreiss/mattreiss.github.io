@@ -9,7 +9,7 @@ import Dunes from '../../assets/video/dunes.mp4';
 
 
 let Posts = {
-  featured: 8,
+  featured: 9,
   0: {
     title: 'Half Dome',
     src:   "https://drscdn.500px.org/photo/111533197/q%3D80_m%3D2000/v2?webp=true&sig=6532ba5a6390b4745312ccbddafd961af59785bec7e697cf95f6c03b568d5e49",
