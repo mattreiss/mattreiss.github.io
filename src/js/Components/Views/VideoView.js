@@ -58,7 +58,7 @@ class VideoView extends Component {
         let height = this.video.videoHeight;
         this.aspectRatio = height / width;
         this.updateDimensions();
-        this.props.scale == 1 && this.video.play();
+        this.props.scale === 1 && this.video.play();
     }, false );
   }
 
@@ -97,7 +97,7 @@ class VideoView extends Component {
           height={height}
           ref={(ref) => this.video = ref}
           style={Theme.getStyles().ImageView({ marginLeft, marginTop })}
-          autoPlay={scale == 1 ? "autoplay" : undefined} loop={scale == 1 ? "loop" : undefined}>
+          autoPlay={scale === 1 ? "autoplay" : undefined} loop={scale === 1 ? "loop" : undefined}>
             <source src={src} type="video/mp4" />
             Your browser does not support the video tag.
         </video>
