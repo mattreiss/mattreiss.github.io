@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MainActions } from '../../Redux/Actions';
+// import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 import { ScreenView } from '../Views';
 
 class ContactScreen extends React.Component {
 
   onClick = () => {
-    this.props.showScreen('MainScreen');
   }
 
   render() {
@@ -48,15 +47,14 @@ class ContactScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { screen } = state.main
+  // let { } = state.main
   return {
-    main: { screen }
+    main: { }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showScreen: (screen, screenProps) => dispatch(MainActions.showScreen(screen, screenProps))
   }
 }
 

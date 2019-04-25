@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { MainActions } from '../../Redux/Actions';
+// import { MainActions } from '../../Redux/Actions';
 import { Posts, Menu } from '../../Constants';
 import * as Screens from '../Screens';
 
@@ -23,6 +23,11 @@ class ScreenNavigator extends React.Component {
           component={ Screens.PostScreen } />
       )
     }
+    routes.push(
+      <Route exact key={-1}
+        path={"/cms"}
+        component={ Screens.CMSScreen } />
+    )
     return (
       <HashRouter>
         <Switch>{routes}</Switch>
@@ -32,15 +37,14 @@ class ScreenNavigator extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { screen } = state.main
+  // let { screen } = state.main
   return {
-    main: { screen }
+    main: {  }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showScreen: (screen, screenProps) => dispatch(MainActions.showScreen(screen, screenProps))
   }
 }
 

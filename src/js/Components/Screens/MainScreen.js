@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Theme from '../../Themes';
 import { Posts } from '../../Constants';
 import { ScreenView, MediaView } from '../Views';
-import { MainActions } from '../../Redux/Actions';
+// import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 
 class MainScreen extends React.Component {
@@ -68,15 +68,14 @@ class MainScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { screen } = state.main
+  // let { } = state.main
   return {
-    main: { screen }
+    main: { }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showScreen: (screen, screenProps) => dispatch(MainActions.showScreen(screen, screenProps))
   }
 }
 

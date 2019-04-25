@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ScreenView } from '../Views';
 import * as Contents from '../Contents';
-import { MainActions } from '../../Redux/Actions';
+// import { MainActions } from '../../Redux/Actions';
 import { Posts } from '../../Constants';
 import { MediaView } from '../Views'
 // import Theme from '../../Themes';
@@ -39,15 +39,14 @@ class PostScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { screen } = state.main
+  // let {  } = state.main
   return {
-    main: { screen }
+    main: {  }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showScreen: (screen, screenProps) => dispatch(MainActions.showScreen(screen, screenProps))
   }
 }
 
