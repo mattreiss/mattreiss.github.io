@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import { ScreenView } from '../Views';
+import { StackerForm } from '../Forms';
 import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 
@@ -13,16 +14,23 @@ class CMSScreen extends React.Component {
     socket.on('disconnect', function(){});
   }
 
-  onClickRun = () => {
-    console.log("running stacker");
-    this.props.run("Stacker", ["arg1", "arg2", "arg3", "arg4"]);
+  onSubmitStackerForm = (form) => {
+    console.log("running stacker", form);
+    let formString =  JSON.stringify(form);
+    for (let key in form) {
+      formString = formString.replace('"' + key + '"', key)
+    }
+    this.props.run("Stacker", [
+      form.selectedFolder,
+      formString
+    ]);
   }
 
   render() {
     return (
       <ScreenView>
-        <div style={{marginTop: 60}}>
-          <button onClick={this.onClickRun}>Run Stacker</button>
+        <div style={{marginTop: 100}}>
+          <StackerForm onSubmit={this.onSubmitStackerForm} />
         </div>
       </ScreenView>
     );
