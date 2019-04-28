@@ -12,6 +12,17 @@ class CMSScreen extends React.Component {
     socket.on('connect', function(){ console.log("connected to socket")});
     socket.on('result', function(result){ console.log("result ", result)});
     socket.on('disconnect', function(){});
+    let { directory } = this.props.main;
+    this.props.list(directory);
+  }
+
+  onSubmitCompressForm = () => {
+    this.props.run("Compress", [
+      '/Users/matt/Desktop',
+      'DSC06960.JPG',
+      '~/Dev/mattreiss.github.io/src/assets/jpg',
+      7
+    ]);
   }
 
   onSubmitStackerForm = (form) => {
@@ -27,10 +38,16 @@ class CMSScreen extends React.Component {
   }
 
   render() {
+    let {files, folders, directory} = this.props.main;
     return (
       <ScreenView>
         <div style={{marginTop: 100}}>
-          <StackerForm onSubmit={this.onSubmitStackerForm} />
+          <StackerForm
+            directory={directory}
+            folders={folders}
+            files={files}
+            onChangeDirectory={this.props.list}
+            onSubmit={this.onSubmitStackerForm} />
         </div>
       </ScreenView>
     );
@@ -38,15 +55,16 @@ class CMSScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // let {  } = state.main
+  let { directory, folders, files } = state.main
   return {
-    main: {  }
+    main: { directory, folders, files }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    run: (command, args) => dispatch(MainActions.run(command, args))
+    run: (command, args) => dispatch(MainActions.run(command, args)),
+    list: (directory) => dispatch(MainActions.list(directory))
   }
 }
 

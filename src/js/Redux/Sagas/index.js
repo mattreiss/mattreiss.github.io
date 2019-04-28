@@ -15,7 +15,8 @@ const root = function * root () {
   yield all([
     // Main sagas
     takeLatest(MainTypes.INIT, MainSagas.init),
-    takeLatest(MainTypes.RUN, MainSagas.run)
+    takeLatest(MainTypes.RUN, MainSagas.run),
+    takeLatest(MainTypes.LIST, MainSagas.list)
   ])
 }
 

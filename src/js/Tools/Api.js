@@ -7,5 +7,6 @@ const api = apisauce.create({ baseURL });
 const Api = {};
 
 Api.run = (command, args) => api.post('/run', {command, args});
+Api.list = (directory) => api.post('/list', {directory});
 
 export default Api;

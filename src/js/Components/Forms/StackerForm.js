@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
 // import Theme from '../../Themes';
 
 const BlendMode = {
@@ -12,7 +13,7 @@ class StackerForm extends Component {
     selectedFolder: "",
     blendMode: BlendMode.LIGHTEN,
     effect: "commet",
-    stackLength: 4,
+    stackLength: 32,
     stackGrowth: 1,
     autoAlign: false,
     action: null,
@@ -26,14 +27,24 @@ class StackerForm extends Component {
   }
 
   render() {
+    let { folders, files, onChangeDirectory } = this.props;
     return (
       <div>
-        <input
-          type="text"
-          val={this.state.selectedFolder}
-          onChange={e => this.setState({selectedFolder: e.target.value})}
-          placeholder="timelapse directory"
-          name="selectedFolder" />
+        <TextField
+          onChange={e => onChangeDirectory(e.target.value)}
+          value={this.props.directory}
+          label="Source Directory"
+        />
+        {folders.map(folder => (
+          <div
+            key={folder}
+            onClick={() => this.setState({selectedFolder: this.state.directory+'/'+folder})}>
+            {folder}
+          </div>
+        ))}
+        {files.map(file => (
+          <div key={file}>{file}</div>
+        ))}
         <button onClick={this.onSubmit}>Stack</button>
       </div>
     );

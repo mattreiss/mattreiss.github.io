@@ -32,19 +32,18 @@ class MainScreen extends React.Component {
     while (Posts.featured % scale !== 0) scale++;
     for (let i = Posts.featured - 1; i >= 0; i--) {
       posts.push(
-        <div style={Theme.getStyles().LibraryItem()}>
+        <div key={i} style={Theme.getStyles().LibraryItem()}>
           <MediaView
-            key={i}
             src={Posts[i].src}
             onClick={() => this.onClickPost(i)}
             scale={scale}
             isSquare={true}
           />
-        <div />
+          <div />
           <h2 style={Theme.getStyles().LibraryItemTitle()}>
             {Posts[i].title}
           </h2>
-        <div />
+          <div />
         </div>
       )
     }
