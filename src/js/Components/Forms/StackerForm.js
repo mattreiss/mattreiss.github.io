@@ -52,6 +52,15 @@ class StackerForm extends Component {
     </GridListTile>
   )
 
+  renderDirectoryImage = (item, icon, isActive, onClick) => {
+    let path =  (this.props.directory + "/" + item).replace("//", "/").replace("~","/Users/matt");
+    return (
+      <GridListTile key={item}>
+        <img src={"http://localhost:1337/directory" + path} alt="" width="250px" />
+      </GridListTile>
+    )
+  }
+
   renderDirectory = () => {
     let {
       folders,
@@ -61,7 +70,7 @@ class StackerForm extends Component {
     } = this.props;
     return (
       <div>
-        <GridList cellHeight={50} style={{width: 520, margin: 'auto'}}>
+        <GridList cellHeight={'auto'} style={{width: 520, margin: 'auto'}}>
           <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
             <ListSubheader component="div" style={{paddingBottom: 24}}>
               <TextField
@@ -78,7 +87,7 @@ class StackerForm extends Component {
             this.state.selectedFolder === (directory+'/'+folder).replace("//", "/"),
             () => this.setState({selectedFolder: (directory+'/'+folder).replace("//", "/"), selectedFile: "", step: 2})
           ))}
-          {false && files.map(file => file && file.endsWith(".jpg") && this.renderDirectoryItem(
+          {files.map(file => file && file.toLowerCase().endsWith(".jpg") && this.renderDirectoryImage(
               file,
               "image",
               this.state.selectedFile === directory+'/'+file,
