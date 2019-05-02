@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import { ScreenView } from '../Views';
-import { StackerForm } from '../Forms';
+import { FormNavigator } from '../Navigators';
 import { MainActions } from '../../Redux/Actions';
 // import Theme from '../../Themes';
 
@@ -25,8 +25,8 @@ class CMSScreen extends React.Component {
     ]);
   }
 
+
   onSubmitStackerForm = (form) => {
-    console.log("running stacker", form);
     let formString =  JSON.stringify(form);
     for (let key in form) {
       formString = formString.replace('"' + key + '"', key)
@@ -37,17 +37,13 @@ class CMSScreen extends React.Component {
     ]);
   }
 
+
   render() {
     let {files, folders, directory} = this.props.main;
     return (
       <ScreenView>
         <div style={{marginTop: 100}}>
-          <StackerForm
-            directory={directory}
-            folders={folders}
-            files={files}
-            onChangeDirectory={this.props.list}
-            onSubmit={this.onSubmitStackerForm} />
+          <FormNavigator  />
         </div>
       </ScreenView>
     );

@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import Card from '@material-ui/core/Card';
-import Icon from '@material-ui/core/Icon';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import Button from '@material-ui/core/Button';
 
 // import Theme from '../../Themes';
 
@@ -23,8 +17,6 @@ const BlendMode = {
 
 class StackerForm extends Component {
   state = {
-    selectedFolder: "",
-    selectedFile: "",
     blendMode: BlendMode.LIGHTEN,
     effect: "commet",
     stackLength: 32,
@@ -34,68 +26,10 @@ class StackerForm extends Component {
     displacement: 1,
     video: "1080@24",
     delayLength: 0,
-    step: 1,
   }
 
   onSubmit = () => {
     this.props.onSubmit(this.state);
-  }
-
-  renderDirectoryItem = (item, icon, isActive, onClick) => (
-    <GridListTile key={item}>
-      <Card
-        style={{width: 250, height: 40, display: 'inline-block', cursor: 'pointer', textAlign: 'left', backgroundColor: isActive ? 'blue': 'white'}}
-        onClick={onClick}>
-        <div style={{display: 'inline-block'}}><Icon fontSize="large">{icon}</Icon></div>
-        <div style={{display: 'inline-block', position: 'absolute', top: 10, paddingLeft: 10}}>{item}</div>
-      </Card>
-    </GridListTile>
-  )
-
-  renderDirectoryImage = (item, icon, isActive, onClick) => {
-    let path =  (this.props.directory + "/" + item).replace("//", "/").replace("~","/Users/matt");
-    return (
-      <GridListTile key={item}>
-        <img src={"http://localhost:1337/directory" + path} alt="" width="250px" />
-      </GridListTile>
-    )
-  }
-
-  renderDirectory = () => {
-    let {
-      folders,
-      files,
-      directory,
-      onChangeDirectory
-    } = this.props;
-    return (
-      <div>
-        <GridList cellHeight={'auto'} style={{width: 520, margin: 'auto'}}>
-          <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-            <ListSubheader component="div" style={{paddingBottom: 24}}>
-              <TextField
-                style={{width: '100%'}}
-                onChange={e => onChangeDirectory(e.target.value)}
-                value={directory}
-                label="Source Directory"
-              />
-            </ListSubheader>
-          </GridListTile>
-          {folders.map(folder => folder && this.renderDirectoryItem(
-            folder,
-            "folder",
-            this.state.selectedFolder === (directory+'/'+folder).replace("//", "/"),
-            () => this.setState({selectedFolder: (directory+'/'+folder).replace("//", "/"), selectedFile: "", step: 2})
-          ))}
-          {files.map(file => file && file.toLowerCase().endsWith(".jpg") && this.renderDirectoryImage(
-              file,
-              "image",
-              this.state.selectedFile === directory+'/'+file,
-              () => this.setState({selectedFile: directory+'/'+file, selectedFolder: ""})
-          ))}
-        </GridList>
-      </div>
-    )
   }
 
   renderSelectInput = (key, title, options) => (
@@ -117,7 +51,7 @@ class StackerForm extends Component {
     </div>
   )
 
-  renderOptions = () => {
+  render() {
     return (
       <div>
         <div style={{padding: 10}} onClick={() => this.setState({step: 1})}>
@@ -202,25 +136,8 @@ class StackerForm extends Component {
             label="Auto Align Images"
           />
         </div>
-        <div>
-          <Button
-            onClick={this.onSubmit}
-            variant="contained"
-            color="primary"
-            style={{}}>
-            Submit
-          </Button>
-        </div>
       </div>
     )
-  }
-
-  render() {
-    switch (this.state.step) {
-      default:
-      case 1: return this.renderDirectory();
-      case 2: return this.renderOptions();
-    }
   }
 }
 
