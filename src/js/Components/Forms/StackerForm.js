@@ -162,6 +162,11 @@ class StackerForm extends Component {
             InputLabelProps={{
              shrink: true,
             }}
+            inputProps={{
+              min: "1",
+              max: "10",
+              step: "1"
+            }}
             margin="normal"
             variant="outlined"
           />
@@ -172,9 +177,13 @@ class StackerForm extends Component {
             value={this.state.stackLength}
             onChange={e => this.setState({ stackLength: e.target.value})}
             type="number"
-            step={8}
             InputLabelProps={{
              shrink: true,
+            }}
+            inputProps={{
+              min: "1",
+              max: "500",
+              step: "4"
             }}
             margin="normal"
             variant="outlined"
