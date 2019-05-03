@@ -14,11 +14,32 @@ class DirectoryForm extends Component {
     selectedFile: "",
   }
 
+  onChange = (data) => {
+    this.setState(data);
+    this.props.onChange(data);
+  }
+
+  onDoubleClick = (item) => {
+    let { onChangeDirectory, directory } = this.props;
+    let nextDirectory = (directory + "/" + item).replace("//", "/");
+    if (item == "..") {
+      let lastSlash = directory.lastIndexOf("/");
+      let firstSlash = directory.indexOf("/");
+      if (lastSlash != firstSlash) {
+        nextDirectory = directory.substring(0, lastSlash);
+      } else {
+        return;
+      }
+    }
+    onChangeDirectory(nextDirectory)
+  }
+
   renderDirectoryItem = (item, icon, isActive, onClick) => (
-    <GridListTile key={item}>
+    <GridListTile cols={2} key={item}>
       <Card
-        style={{width: 250, height: 40, display: 'inline-block', cursor: 'pointer', textAlign: 'left', backgroundColor: isActive ? 'yellow': 'white'}}
-        onClick={onClick}>
+        style={{width: '99%', height: 40, display: 'inline-block', cursor: 'pointer', textAlign: 'left', backgroundColor: isActive ? 'yellow': 'white'}}
+        onClick={onClick}
+        onDoubleClick={() => this.onDoubleClick(item)}>
         <div style={{display: 'inline-block'}}><Icon fontSize="large">{icon}</Icon></div>
         <div style={{display: 'inline-block', position: 'absolute', top: 10, paddingLeft: 10}}>{item}</div>
       </Card>
@@ -27,7 +48,7 @@ class DirectoryForm extends Component {
 
   renderDirectoryImage = (item, icon, isActive, onClick) => {
     return (
-      <GridListTile key={item}>
+      <GridListTile cols={1} key={item}>
         <Card
           style={{display: 'inline-block', cursor: 'pointer', textAlign: 'left', backgroundColor: isActive ? 'yellow': 'white'}}
           onClick={onClick}>
@@ -57,17 +78,17 @@ class DirectoryForm extends Component {
               />
             </ListSubheader>
           </GridListTile>
-          {folders.map(folder => folder && this.renderDirectoryItem(
+          {[".."].concat(folders).map(folder => folder && this.renderDirectoryItem(
             folder,
             "folder",
             this.state.selectedFolder === (directory+'/'+folder).replace("//", "/"),
-            () => this.setState({selectedFolder: (directory+'/'+folder).replace("//", "/"), selectedFile: "", step: 2})
+            () => folder != ".." && this.onChange({selectedFolder: (directory+'/'+folder).replace("//", "/"), selectedFile: ""})
           ))}
           {files.map(file => file && file.toLowerCase().endsWith(".jpg") && this.renderDirectoryImage(
               file,
               "image",
               this.state.selectedFile === directory+'/'+file,
-              () => this.setState({selectedFile: directory+'/'+file, selectedFolder: ""})
+              () => this.onChange({selectedFile: (directory+'/'+file).replace("//", "/"), selectedFolder: ""})
           ))}
         </GridList>
       </div>

@@ -28,8 +28,17 @@ class StackerForm extends Component {
     delayLength: 0,
   }
 
+  componentDidMount() {
+    this.onChange(this.state);
+  }
+
   onSubmit = () => {
     this.props.onSubmit(this.state);
+  }
+
+  onChange = (data) => {
+    this.setState(data);
+    this.props.onChange(data);
   }
 
   renderSelectInput = (key, title, options) => (
@@ -38,7 +47,7 @@ class StackerForm extends Component {
         <InputLabel htmlFor={key}>{title}</InputLabel>
         <Select
           value={this.state[key] == null ? '' : this.state[key]}
-          onChange={e => e.target.value && e.target.value.length ? this.setState({ [key]: e.target.value}): this.setState({ [key]: null})}
+          onChange={e => this.onChange({ [key]: e.target.value}) }
           inputProps={{
             name: key,
             id: key,
@@ -54,7 +63,7 @@ class StackerForm extends Component {
   render() {
     return (
       <div>
-        <div style={{padding: 10}} onClick={() => this.setState({step: 1})}>
+        <div style={{padding: 10}} onClick={() => this.onChange({step: 1})}>
           <InputLabel><b><u>{this.state.selectedFolder}</u></b></InputLabel>
         </div>
         {this.renderSelectInput('blendMode', "Blend Mode", [
@@ -91,7 +100,7 @@ class StackerForm extends Component {
           <TextField
             label="Frame Displacement"
             value={this.state.displacement}
-            onChange={e => this.setState({ displacement: e.target.value})}
+            onChange={e => this.onChange({ displacement: e.target.value})}
             type="number"
             InputLabelProps={{
              shrink: true,
@@ -109,7 +118,7 @@ class StackerForm extends Component {
           <TextField
             label="Stack Length"
             value={this.state.stackLength}
-            onChange={e => this.setState({ stackLength: e.target.value})}
+            onChange={e => this.onChange({ stackLength: e.target.value})}
             type="number"
             InputLabelProps={{
              shrink: true,
@@ -128,7 +137,7 @@ class StackerForm extends Component {
             control={
               <Switch
                 checked={this.state.autoAlign}
-                onChange={(e) => this.setState({autoAlign: e.target.checked})}
+                onChange={(e) => this.onChange({autoAlign: e.target.checked})}
                 value="autoAlign"
                 color="primary"
               />

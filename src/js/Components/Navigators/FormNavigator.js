@@ -12,8 +12,23 @@ class FormNavigator extends Component {
     step: 0
   }
 
+  onSubmitStackerForm = (form) => {
+    let formString =  JSON.stringify(form);
+    for (let key in form) {
+      formString = formString.replace('"' + key + '"', key)
+    }
+    this.props.run("Stacker", [
+      form.selectedFolder,
+      formString
+    ]);
+  }
+
   onNextStep = () => {
     let step = this.state.step + 1;
+    console.log("state", this.state);
+    if (step >= 2) {
+      return this.onSubmitStackerForm(this.state);
+    }
     this.setState({step})
   }
 
@@ -22,18 +37,20 @@ class FormNavigator extends Component {
     this.setState({step})
   }
 
+  onChange = (data) => {
+    this.setState(data);
+  }
+
   renderForm() {
     switch (this.state.step) {
       default:
       case 0: return <Forms.DirectoryForm
         {...this.props.main}
-        onNextStep={this.onNextStep}
-        onLastStep={this.onLastStep}
+        onChange={this.onChange}
         onChangeDirectory={this.props.list}/>;
       case 1: return <Forms.StackerForm
         {...this.props.main}
-        onNextStep={this.onNextStep}
-        onLastStep={this.onLastStep}/>;
+        onChange={this.onChange} />;
     }
   }
 
@@ -54,7 +71,11 @@ class FormNavigator extends Component {
             onClick={this.onLastStep}>
             Back
           </Button>
-          <Button variant="contained" color="primary" onClick={this.onNextStep}>
+          <Button
+            disabled={!this.state.selectedFolder || !this.state.selectedFolder.length}
+            variant="contained"
+            color="primary"
+            onClick={this.onNextStep}>
             Next
           </Button>
         </div>
