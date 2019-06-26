@@ -22,10 +22,10 @@ class DirectoryForm extends Component {
   onDoubleClick = (item) => {
     let { onChangeDirectory, directory } = this.props;
     let nextDirectory = (directory + "/" + item).replace("//", "/");
-    if (item == "..") {
+    if (item === "..") {
       let lastSlash = directory.lastIndexOf("/");
       let firstSlash = directory.indexOf("/");
-      if (lastSlash != firstSlash) {
+      if (lastSlash !== firstSlash) {
         nextDirectory = directory.substring(0, lastSlash);
       } else {
         return;
@@ -82,7 +82,7 @@ class DirectoryForm extends Component {
             folder,
             "folder",
             this.state.selectedFolder === (directory+'/'+folder).replace("//", "/"),
-            () => folder != ".." && this.onChange({selectedFolder: (directory+'/'+folder).replace("//", "/"), selectedFile: ""})
+            () => folder !== ".." && this.onChange({selectedFolder: (directory+'/'+folder).replace("//", "/"), selectedFile: ""})
           ))}
           {files.map(file => file && file.toLowerCase().endsWith(".jpg") && this.renderDirectoryImage(
               file,

@@ -41,13 +41,22 @@ class FormNavigator extends Component {
     this.setState(data);
   }
 
+  onChangeDirectory = (directory) => {
+    if (!directory || directory === "" || directory.indexOf("/") === -1) {
+      if (directory !== "~") {
+        directory = "/"
+      }
+    }
+    this.props.list(directory);
+  }
+
   renderForm() {
     switch (this.state.step) {
       default:
       case 0: return <Forms.DirectoryForm
         {...this.props.main}
         onChange={this.onChange}
-        onChangeDirectory={this.props.list}/>;
+        onChangeDirectory={this.onChangeDirectory}/>;
       case 1: return <Forms.StackerForm
         {...this.props.main}
         onChange={this.onChange} />;
