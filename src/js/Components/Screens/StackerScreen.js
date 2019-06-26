@@ -23,8 +23,6 @@ class CMSScreen extends React.Component {
       console.log("disconnected");
       this.setState({connected: false})
     });
-    let { directory } = this.props.main;
-    this.props.list(directory);
   }
 
   onSubmitCompressForm = () => {
@@ -36,6 +34,12 @@ class CMSScreen extends React.Component {
     ]);
   }
 
+  onSubmitTestForm = () => {
+    this.props.run("Test", [
+      'LayerUtil',
+      'lightenAllLayers'
+    ]);
+  }
 
   onSubmitStackerForm = (form) => {
     let formString =  JSON.stringify(form);
@@ -65,7 +69,7 @@ class CMSScreen extends React.Component {
       <ScreenView>
         <div style={{marginTop: 100}}>
           <h1>Loading..</h1>
-          <p>Please wait while photoshop processes</p>
+          <p>Please wait</p>
         </div>
       </ScreenView>
     )
@@ -74,10 +78,12 @@ class CMSScreen extends React.Component {
   render() {
     if (!this.state.connected) return this.renderConnectInstructions();
     if (this.state.loading) return this.renderLoading();
-    let {files, folders, directory} = this.props.main;
     return (
       <ScreenView>
         <div style={{marginTop: 100}}>
+          <div>
+            <button onClick={this.onSubmitTestForm}>Run Test</button>
+          </div>
           <FormNavigator  />
         </div>
       </ScreenView>
@@ -86,9 +92,9 @@ class CMSScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let { directory, folders, files } = state.main
+  // let {} = state.main
   return {
-    main: { directory, folders, files }
+    main: {}
   }
 }
 

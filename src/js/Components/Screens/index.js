@@ -1,11 +1,13 @@
 import MainScreen from './MainScreen';
 import ContactScreen from './ContactScreen';
 import PostScreen from './PostScreen';
-import CMSScreen from './CMSScreen';
+import StackerScreen from './StackerScreen';
+import WebCrawlerScreen from './WebCrawlerScreen';
 
 export {
   MainScreen,
   ContactScreen,
   PostScreen,
-  CMSScreen
+  StackerScreen,
+  WebCrawlerScreen
 }

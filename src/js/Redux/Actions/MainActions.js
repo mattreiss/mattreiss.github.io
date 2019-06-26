@@ -13,6 +13,7 @@ const { Types, Creators } = createActions({
   // <actionName>:[<arg1>,...,<argN>] --> function actionName(arg1,..., argN)
   init: [],
   run: ['command', 'args'],
+  runWebCrawler: ['command', 'options'],
   list: ['directory'],
   putDirectory: ['directory'],
   putFiles: ['files'],

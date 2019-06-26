@@ -18,14 +18,16 @@ const BlendMode = {
 class StackerForm extends Component {
   state = {
     blendMode: BlendMode.LIGHTEN,
-    effect: "commet",
-    stackLength: 32,
+    effect: "tile",
+    stackLength: 12,
     stackGrowth: 1,
     autoAlign: false,
     action: null,
     displacement: 1,
     video: "1080@24",
     delayLength: 0,
+    growEvery: 2,
+    stackOnce: true
   }
 
   componentDidMount() {
@@ -74,13 +76,16 @@ class StackerForm extends Component {
         {this.renderSelectInput('effect', 'Effect', [
           {title: 'Commet', value: 'commet'},
           {title: 'Reverse Commet', value: 'reverseCommet'},
+          {title: 'Tile', value: 'tile'},
+          {title: 'TileBend', value: 'tileBend'},
+          {title: 'Reverse Tile', value: 'reverseTile'},
           {title: 'Normal', value: 'normal'},
         ])}
         {this.renderSelectInput('stackGrowth', 'Growth', [
           {title: 'Growth', value: 1},
           {title: 'Decay', value: 2},
           {title: 'Growth & Decay', value: 3},
-          {title: "None", value: null},
+          {title: "None", value: 0},
         ])}
         {this.renderSelectInput('video', 'Export Video', [
           {title: '720p @24fps', value: '720@24'},
@@ -143,6 +148,19 @@ class StackerForm extends Component {
               />
             }
             label="Auto Align Images"
+          />
+        </div>
+        <div>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={this.state.stackOnce}
+                onChange={(e) => this.onChange({stackOnce: e.target.checked})}
+                value="stackOnce"
+                color="primary"
+              />
+            }
+            label="Stack Once"
           />
         </div>
       </div>

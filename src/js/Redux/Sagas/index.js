@@ -16,6 +16,7 @@ const root = function * root () {
     // Main sagas
     takeLatest(MainTypes.INIT, MainSagas.init),
     takeLatest(MainTypes.RUN, MainSagas.run),
+    takeLatest(MainTypes.RUN_WEB_CRAWLER, MainSagas.runWebCrawler),
     takeLatest(MainTypes.LIST, MainSagas.list)
   ])
 }

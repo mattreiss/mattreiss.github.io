@@ -25,8 +25,13 @@ class ScreenNavigator extends React.Component {
     }
     routes.push(
       <Route exact key={-1}
-        path={"/cms"}
-        component={ Screens.CMSScreen } />
+        path={"/stacker"}
+        component={ Screens.StackerScreen } />
+    )
+    routes.push(
+      <Route exact key={-2}
+        path={"/webcrawler"}
+        component={ Screens.WebCrawlerScreen } />
     )
     return (
       <HashRouter>

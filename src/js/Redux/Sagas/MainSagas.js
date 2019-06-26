@@ -12,7 +12,7 @@ export const init = function * init() {
 
 export const run = function * run({command, args}) {
   Logger.time("MainSagas.run")
-  let res = yield call(Api.run, command, args)
+  let res = yield call(Api.runStacker, command, args)
   Logger.info("MainSagas.run result", command, args, res.data)
   Logger.timeEnd("MainSagas.run")
 }
@@ -34,4 +34,11 @@ export const list = function * list({directory}) {
   yield put(MainActions.putFiles(files));
   yield put(MainActions.putFolders(folders));
   Logger.timeEnd("MainSagas.list")
+}
+
+export const runWebCrawler = function * runWebCrawler({command, options}) {
+  Logger.time("MainSagas.runWebCrawler")
+  let res = yield call(Api.runWebCrawler, command, options)
+  Logger.info("MainSagas.runWebCrawler result", command, options, res.data)
+  Logger.timeEnd("MainSagas.runWebCrawler")
 }
