@@ -5,6 +5,11 @@ let Menu = [
     screen: "MainScreen"
   },
   {
+    label: "Stacker",
+    path: "/stacker",
+    screen: "StackerScreen"
+  },
+  {
     label: "Contact",
     path: "/contact",
     screen: "ContactScreen"

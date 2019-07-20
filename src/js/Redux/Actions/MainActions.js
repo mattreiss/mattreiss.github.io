@@ -12,6 +12,7 @@ const merge = (state, data) => {
 const { Types, Creators } = createActions({
   // <actionName>:[<arg1>,...,<argN>] --> function actionName(arg1,..., argN)
   init: [],
+  ig: ['command', 'args'],
   run: ['command', 'args'],
   runWebCrawler: ['command', 'options'],
   list: ['directory'],

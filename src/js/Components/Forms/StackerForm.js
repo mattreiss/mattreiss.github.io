@@ -18,7 +18,7 @@ const BlendMode = {
 class StackerForm extends Component {
   state = {
     blendMode: BlendMode.LIGHTEN,
-    effect: "tile",
+    effect: "commet",
     stackLength: 12,
     stackGrowth: 1,
     autoAlign: false,
@@ -26,8 +26,8 @@ class StackerForm extends Component {
     displacement: 1,
     video: "1080@24",
     delayLength: 0,
-    growEvery: 2,
-    stackOnce: true
+    growEvery: 1,
+    stackOnce: false
   }
 
   componentDidMount() {

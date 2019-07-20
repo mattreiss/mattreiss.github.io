@@ -17,6 +17,13 @@ export const run = function * run({command, args}) {
   Logger.timeEnd("MainSagas.run")
 }
 
+export const ig = function * ig({command, args}) {
+  Logger.time("MainSagas.ig")
+  let res = yield call(Api.ig, command, args)
+  Logger.info("MainSagas.ig result", command, args, res.data)
+  Logger.timeEnd("MainSagas.ig")
+}
+
 export const list = function * list({directory}) {
   Logger.time("MainSagas.list")
   let res = yield call(Api.list, directory)

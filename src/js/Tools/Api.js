@@ -16,5 +16,6 @@ Api.img = (name) => Api.stackerURL + '/directory/' + name;
 Api.webCrawlerURL = local(WEB_CRAWLER_SERVER_PORT);
 Api.webCrawler = apisauce.create({ baseURL: Api.webCrawlerURL });
 Api.runWebCrawler = (command, options) => Api.webCrawler.post('/run', {command, options});
+Api.ig = (command, options) => Api.webCrawler.post('/igapi', {command, options});
 
 export default Api;
