@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects';
 import Logger from 'js-logger';
-import { Api } from '../../Tools';
-import { MainActions } from '../Actions';
+import Api from '../../Api';
+import { MainActions } from '../actions';
 
 export const init = function * init() {
   // yield put(MainActions.getConfig());

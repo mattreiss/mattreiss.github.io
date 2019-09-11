@@ -1,17 +1,11 @@
 import * as Colors from './Colors';
-import * as Styles from './Styles';
 
 let Theme = {
-  colors: 'DefaultColors',
-  styles: 'DefaultStyles'
+  colors: 'DefaultColors'
 };
 
 Theme.getColors = () => {
   return Colors[Theme.colors];
-}
-
-Theme.getStyles = () => {
-  return Styles[Theme.styles];
 }
 
 Theme.setTheme = (obj) => {

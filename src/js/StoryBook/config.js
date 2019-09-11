@@ -9,9 +9,7 @@ addDecorator(
 )
 
 function loadStories() {
-  require('./Stories/Buttons.js');
-  require('./Stories/Screens.js');
-  require('./Stories/Views.js');
+  require('./stories/Buttons.js');
   // You can require as many stories as you need.
 }
 configure(loadStories, module);

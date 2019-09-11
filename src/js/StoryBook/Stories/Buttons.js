@@ -1,13 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Buttons } from '../../Components';
+import Buttons from '../../components/styled/Buttons';
 
 let stories = storiesOf('Buttons', module);
-for (let button in Buttons) {
-  stories.add(button, () => {
-    let TheButton = Buttons[button];
+for (let buttonName in Buttons) {
+  stories.add(buttonName, () => {
+    let ButtonComponent = Buttons[buttonName];
     return (
-      <TheButton />
+      <ButtonComponent>{buttonName} Button</ButtonComponent>
     )
   })
 }

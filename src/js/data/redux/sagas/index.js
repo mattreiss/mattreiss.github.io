@@ -2,7 +2,7 @@ import { takeLatest, all } from 'redux-saga/effects'
 
 /* ------------- Types ------------- */
 
-import { MainTypes } from '../Actions/MainActions'
+import { MainTypes } from '../actions/MainActions'
 
 /* ------------- Sagas ------------- */
 
