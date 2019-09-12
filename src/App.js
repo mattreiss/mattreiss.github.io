@@ -1,15 +1,26 @@
 import React from 'react';
+import { createGlobalStyle } from 'styled-components'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { store, persistor } from './data/redux';
 import { SetupLogger } from "./tools";
 import Router from './Router';
-import '../css/App.css';
 
-class App extends React.Component {
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+`
+
+export default class App extends React.Component {
 
   state = {
-    key: "PersistenceKey-2.1.0"
+    key: "PersistenceKey-0"
   }
 
   constructor(props) {
@@ -34,10 +45,9 @@ class App extends React.Component {
       <Provider store={store}>
         <PersistGate loading={this.renderLoading()} persistor={persistor}>
           <Router />
+          <GlobalStyle />
         </PersistGate>
       </Provider>
     )
   }
 }
-
-export default App;
