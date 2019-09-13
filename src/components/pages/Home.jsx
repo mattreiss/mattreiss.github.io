@@ -2,7 +2,8 @@ import React from 'react';
 import Prism from 'prismjs';
 import {
   Button,
-  TextButton
+  TextButton,
+  MenuButton
 } from '../styled/Buttons';
 import {
   Header,
@@ -15,7 +16,7 @@ class Home extends React.Component {
   state = {
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let url = 'https://raw.githubusercontent.com/mattreiss/chess/chess/src/data/models/GameModel.js';
     fetch(url).then(res => res.text()).then(code => {
       this.setState({code}, () => Prism.highlightElement(this.code));
@@ -42,6 +43,9 @@ class Home extends React.Component {
       <div>
         <Header>
           <Row>
+            <MenuButton onClick={()=>console.log("click")} dark>
+              primary
+            </MenuButton>
             <Button onClick={()=>console.log("click")} primary>
               primary
             </Button>
@@ -59,10 +63,10 @@ class Home extends React.Component {
             </Button>
           </Row>
           <Row>
-            <TextButton onClick={()=>console.log("click")} primary>
+            <TextButton onClick={()=>console.log("click")} primary large>
               text
             </TextButton>
-            <TextButton onClick={()=>console.log("click")} danger>
+            <TextButton onClick={()=>console.log("click")} danger small>
               text
             </TextButton>
             <TextButton onClick={()=>console.log("click")} success>

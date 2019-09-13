@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
 export default class App extends React.Component {
 
   state = {
-    key: "PersistenceKey-0"
+    key: "persist-key-0"
   }
 
   constructor(props) {

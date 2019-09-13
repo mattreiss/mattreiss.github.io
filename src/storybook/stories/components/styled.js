@@ -10,7 +10,7 @@ for (let StyledComponentName in StyledComponents) {
     stories.add(componentName, () => {
       let Component = StyledComponent[componentName];
       return (
-        <Component>{componentName}</Component>
+        <Component primary>{componentName}</Component>
       )
     })
   }

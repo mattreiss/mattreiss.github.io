@@ -1,26 +1,24 @@
 import styled from 'styled-components';
+import { Menu } from 'styled-icons/material';
+import {
+  themedColor,
+  themedFontSize,
+  themedIconSize
+} from './_utils';
 
-export const Button = styled.button`
-  background-color: ${({theme, negative}) => (negative && theme.colors.negative)};
-  background-color: ${({theme, primary}) => (primary && theme.colors.primary)};
-  background-color: ${({theme, danger}) => (danger && theme.colors.danger)};
-  background-color: ${({theme, success}) => (success && theme.colors.success)};
-  color: ${({theme}) => theme.colors.white};
-  width: 100px;
-  height: 40px;
-  opacity: ${({disabled}) => (disabled ? 0.25 : 1)};
-  cursor: ${({disabled}) => (disabled ? 'not-allowed' : 'pointer')};
-  border: none;
-  border-radius: 8px;
+
+const getButtonStates = ({disabled, primary, theme}) => `
+  opacity: ${disabled ? 0.25 : 1};
+  cursor: ${disabled ? 'not-allowed' : 'pointer'};
 
   &:hover {
     filter: brightness(110%);
-    color: ${({theme, primary, disabled}) => !disabled && (primary ? theme.colors.negative : theme.colors.primary)};
+    color: ${!disabled && (primary ? theme.colors.negative : theme.colors.primary)};
   }
 
   &:active {
     filter: brightness(90%);
-    color: ${({theme, disabled}) => !disabled && theme.colors.white};
+    color: ${!disabled && theme.colors.white};
   }
 
   &:active, &:focus {
@@ -28,15 +26,37 @@ export const Button = styled.button`
   }
 `;
 
+export const Button = styled.button`
+  background-color: ${themedColor};
+  font-size: ${themedFontSize}px;
+  color: ${({theme}) => theme.colors.white};
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  ${getButtonStates}
+`;
+
 export const TextButton = styled(Button)`
-  color: ${({theme}) => theme.colors.dark};
-  color: ${({theme, negative}) => (negative && theme.colors.negative)};
-  color: ${({theme, primary}) => (primary && theme.colors.primary)};
-  color: ${({theme, danger}) => (danger && theme.colors.danger)};
-  color: ${({theme, success}) => (success && theme.colors.success)};
+  color: ${themedColor};
+  font-size: ${themedFontSize}px;
   background-color: transparent;
 
   &:active {
     filter: brightness(100%);
   }
+`;
+
+const createIconButton = (Icon) => styled(Icon).attrs(props => ({
+  size: themedIconSize(props)
+}))`
+  color: ${themedColor};
+  ${getButtonStates}
+`;
+;
+
+export const MenuButton = createIconButton(Menu);
+
+export const TestButton = styled(TextButton)`
+
 `;
