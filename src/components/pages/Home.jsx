@@ -1,4 +1,5 @@
 import React from 'react';
+import Prism from 'prismjs';
 import {
   Button,
   TextButton
@@ -11,6 +12,31 @@ import {
 } from '../styled/Views';
 
 class Home extends React.Component {
+  state = {
+  }
+
+  componentWillMount() {
+    let url = 'https://raw.githubusercontent.com/mattreiss/chess/chess/src/data/models/GameModel.js';
+    fetch(url).then(res => res.text()).then(code => {
+      this.setState({code}, () => Prism.highlightElement(this.code));
+    }).catch(e => {
+      console.log("fetch error", e);
+    })
+  }
+
+  renderCode() {
+    let { code } = this.state;
+    return (
+      <Article>
+        <pre>
+          <code className="language-javascript" ref={ref => this.code = ref} >
+            {code}
+          </code>
+        </pre>
+      </Article>
+    )
+  }
+
   render() {
     return (
       <div>
@@ -50,6 +76,7 @@ class Home extends React.Component {
             </TextButton>
           </Row>
         </Header>
+        {this.renderCode()}
       </div>
     )
   }
