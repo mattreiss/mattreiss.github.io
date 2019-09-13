@@ -27,11 +27,16 @@ class Home extends React.Component {
 
   renderCode() {
     let { code } = this.state;
+    let codeLines = code ? code.split('\n') : [];
+    let codeString = '';
+    for (let i = 23; i < codeLines.length && i < 50; i++) {
+      codeString += `${i} ${codeLines[i]}\n`
+    }
     return (
       <Article>
         <pre>
           <code className="language-javascript" ref={ref => this.code = ref} >
-            {code}
+            {codeString}
           </code>
         </pre>
       </Article>
