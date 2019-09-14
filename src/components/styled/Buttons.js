@@ -3,7 +3,8 @@ import { Menu } from 'styled-icons/material';
 import {
   themedColor,
   themedFontSize,
-  themedIconSize
+  themedIconSize,
+  media
 } from './_utils';
 
 
@@ -55,7 +56,15 @@ const createIconButton = (Icon) => styled(Icon).attrs(props => ({
 `;
 ;
 
-export const MenuButton = createIconButton(Menu);
+export const MenuButton = styled(createIconButton(Menu))`
+  display: none;
+  ${media.tablet`
+    display:inline-block;
+  `};
+  ${media.phone`
+    display:inline-block;
+  `};
+`;
 
 export const TestButton = styled(TextButton)`
 

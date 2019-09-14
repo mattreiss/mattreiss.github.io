@@ -8,9 +8,9 @@ import {
 
 export const Header = styled.header`
   width: 100%;
-  min-height: 80px;
+  padding: 30px;
   ${media.giant`
-    padding: 30px;
+    padding: 25px;
   `};
   ${media.desktop`
     padding: 20px;
@@ -24,27 +24,25 @@ export const Header = styled.header`
 `;
 
 export const Nav = styled.nav`
-  background-color: ${({theme}) => theme.colors.primary};
-  width: 100%;
-  height: 40px;
+  $ > * {
+    display: inline-block;
+  }
+`;
+
+export const Section = styled.section`
+
 `;
 
 export const Article = styled.article`
-  background-color: ${({theme}) => theme.colors.primary};
-  width: 100%;
-  height: 40px;
+
 `;
 
 export const Aside = styled.aside`
-  background-color: ${({theme}) => theme.colors.primary};
-  width: 100%;
-  height: 40px;
+
 `;
 
 export const Figure = styled.figure`
-  background-color: ${({theme}) => theme.colors.primary};
-  width: 100%;
-  height: 40px;
+
 `;
 
 export const Footer = styled.footer`
@@ -57,5 +55,31 @@ export const Footer = styled.footer`
 export const Row = styled.div`
   $ > * {
     display: inline-block;
+  }
+`;
+
+export const Menu = styled.span`
+  display: inline-block;
+  ${media.tablet`
+    display: none;
+  `};
+  ${media.phone`
+    display: none;
+  `};
+`;
+
+export const SideMenu = styled.span`
+  background-color: ${({theme}) => theme.colors.white};
+  padding: ${({theme}) => theme.sizes.padding.large}px;
+  left: 0;
+  position: fixed;
+  display: none;
+  ${media.tablet`
+    display: ${({hidden}) => hidden ? 'none' : 'block'};
+  `};
+
+  & > * {
+    display: block;
+    text-align: left;
   }
 `;
