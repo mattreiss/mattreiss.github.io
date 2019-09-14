@@ -5,6 +5,7 @@ import {
   themedIconSize,
   media
 } from './_utils';
+import { TextButton } from './Buttons';
 
 export const Header = styled.header`
   width: 100%;
@@ -78,7 +79,7 @@ export const SideMenu = styled.span`
     display: ${({hidden}) => hidden ? 'none' : 'block'};
   `};
 
-  & > * {
+  ${TextButton} {
     display: block;
     text-align: left;
   }

@@ -3,8 +3,18 @@ import { ThemeProvider } from 'styled-components';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { MainActions } from './data/redux/actions';
-import Home from './components/pages/Home';
-import Theme from './theme';
+import * as Pages from './components/pages';
+import MainMenu from './components/elements/MainMenu';
+// import Theme from './theme';
+
+const withMainMenu = (Component, name) => () => {
+  return (
+    <div>
+      <MainMenu />
+      <Component selection={name}/>
+    </div>
+  )
+}
 
 class Router extends React.Component {
 
@@ -14,14 +24,23 @@ class Router extends React.Component {
 
   render() {
     let { main } = this.props;
-    console.log("redux main", main)
+    let routes = [];
+    for (let page in Pages) {
+      let PageComponent = Pages[page];
+      routes.push(
+        <Route key={page}
+          path={`/${page}`}
+          component={withMainMenu(PageComponent, page)} />
+      )
+    }
     return (
       <ThemeProvider theme={main.theme}>
         <HashRouter>
           <Switch>
             <Route exact key={1}
               path={"/"}
-              component={ Home } />
+              component={withMainMenu(Pages.Home)} />
+            {routes}
           </Switch>
         </HashRouter>
       </ThemeProvider>

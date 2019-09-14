@@ -16,23 +16,15 @@ import {
   Row
 } from '../styled/Views';
 
-class Home extends React.Component {
+class Code extends React.Component {
   render() {
     return (
       <Section>
         <Article>
           <CodeSnippet
-            url='https://raw.githubusercontent.com/mattreiss/chess/chess/src/data/models/GameModel.js'
+            url='https://raw.githubusercontent.com/mattreiss/chess/chess/src/data/models/PieceModel.js'
             start={23}
-            end={50}
-            showLines={true}
-          />
-        </Article>
-        <Article>
-          <CodeSnippet
-            url='https://raw.githubusercontent.com/mattreiss/chess/chess/src/data/models/GameModel.js'
-            start={8}
-            end={18}
+            end={32}
             showLines={true}
           />
         </Article>
@@ -41,4 +33,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Code;

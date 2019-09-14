@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+import {
+  Link,
+  withRouter
+} from 'react-router-dom';
 import {
   Header,
   Nav,
@@ -13,10 +18,20 @@ import {
   MenuButton
 } from '../styled/Buttons';
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 class MainMenu extends React.Component {
-  state = {
-    selection: 'Home',
-    hideSideMenu: true
+  constructor(props) {
+    super(props);
+    console.log("this.props.location", this.props.location)
+    let selection = this.props.location.pathname.substring(1);
+    if (selection.length <= 1) selection = 'Home';
+    this.state = {
+      selection,
+      hideSideMenu: true
+    }
   }
 
   onClickOption = (selection) => {
@@ -41,18 +56,19 @@ class MainMenu extends React.Component {
     [ 'Home',
       'Photos',
       'Code',
-      'Skate',
-      'About',
-      'Contact'
+      // 'Skate',
+      // 'About',
+      // 'Contact'
     ].forEach(option => menu.push(
+      <StyledLink key={option} to={`/${option}`}>
         <TextButton
-          key={option}
           onClick={() => this.onClickOption(option)}
           negative={selection != option}
           primary={selection == option}
           large={selection == option}>
           {option}
         </TextButton>
+      </StyledLink>
     ));
     return (
       <Header>
@@ -66,4 +82,4 @@ class MainMenu extends React.Component {
   }
 }
 
-export default MainMenu;
+export default withRouter(MainMenu);

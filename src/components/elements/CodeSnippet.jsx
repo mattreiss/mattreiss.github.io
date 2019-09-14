@@ -6,12 +6,18 @@ class CodeSnippet extends React.Component {
   }
 
   componentDidMount() {
+    this._mounted = true;
     let { url } = this.props;
     fetch(url).then(res => res.text()).then(code => {
+      if (!this._mounted) return;
       this.setState({code}, () => Prism.highlightElement(this.code));
     }).catch(e => {
       console.log("fetch error", e);
     })
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
   }
 
   render() {
