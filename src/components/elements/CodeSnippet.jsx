@@ -1,5 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import Prism from 'prismjs';
+
+const Container = styled.div`
+  max-width: 800px;
+  width: 90%;
+  margin: auto;
+`;
 
 class CodeSnippet extends React.Component {
   state = {
@@ -30,11 +37,13 @@ class CodeSnippet extends React.Component {
       codeString += `${codeLines[i]}\n`
     }
     return (
-      <pre>
-        <code className="language-javascript" ref={ref => this.code = ref} >
-          {codeString}
-        </code>
-      </pre>
+      <Container>
+        <pre>
+          <code className="language-javascript" ref={ref => this.code = ref} >
+            {codeString}
+          </code>
+        </pre>
+      </Container>
     )
   }
 }
