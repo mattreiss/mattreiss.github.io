@@ -26,7 +26,7 @@ class Home extends React.Component {
       <Section>
         <Article>
           <Title>About Me</Title>
-          <SubTitle>07/25/1992</SubTitle>
+          <SubTitle>09/14/2019</SubTitle>
           <Paragraph>
             Skateboarding, Photography, and Coding have become my favorite outlets for me to express myself.
             Improving my skills and style on a skateboard is also my favorite way of exercising; Going to a gym feels so mind numbingly boring to me.
