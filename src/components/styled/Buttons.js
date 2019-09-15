@@ -1,25 +1,30 @@
 import styled from 'styled-components';
-import { Menu } from 'styled-icons/material';
 import {
-  themedColor,
-  themedFontSize,
+  space,
+  layout,
+  color,
+  typography
+} from 'styled-system';
+import {
+  Menu,
+  Settings
+} from 'styled-icons/material';
+import {
   themedIconSize,
   media
 } from './_utils';
 
 
-const getButtonStates = ({disabled, primary, theme}) => `
+const getButtonStates = ({disabled, theme}) => `
   opacity: ${disabled ? 0.25 : 1};
   cursor: ${disabled ? 'not-allowed' : 'pointer'};
 
   &:hover {
     filter: brightness(110%);
-    color: ${!disabled && (primary ? theme.colors.negative : theme.colors.primary)};
   }
 
   &:active {
     filter: brightness(90%);
-    color: ${!disabled && theme.colors.white};
   }
 
   &:active, &:focus {
@@ -28,30 +33,34 @@ const getButtonStates = ({disabled, primary, theme}) => `
 `;
 
 export const Button = styled.button`
-  background-color: ${themedColor};
-  font-size: ${themedFontSize}px;
-  color: ${({theme}) => theme.colors.white};
-  width: 100px;
-  height: 40px;
+  ${color}
+  ${layout}
+  ${space}
+  ${typography}
+  height: ${props => props.theme.sizes.xs}px;
   border: none;
-  border-radius: 8px;
+  border-radius: ${props => props.theme.radii.medium}px;
   ${getButtonStates}
 `;
 
 export const TextButton = styled(Button)`
-  color: ${themedColor};
-  font-size: ${themedFontSize}px;
   background-color: transparent;
 
   &:active {
-    filter: brightness(100%);
+  }
+
+  &:hover {
+    filter: brightness(110%);
+    color: ${({disabled, theme}) => !disabled && theme.colors.primary};
   }
 `;
 
 const createIconButton = (Icon) => styled(Icon).attrs(props => ({
   size: themedIconSize(props)
 }))`
-  color: ${themedColor};
+  ${color}
+  ${layout}
+  ${space}
   ${getButtonStates}
 `;
 ;
@@ -61,8 +70,19 @@ export const MenuButton = styled(createIconButton(Menu))`
   ${media.tablet`
     display:inline-block;
   `};
-  ${media.phone`
-    display:inline-block;
+`;
+
+export const SettingsButton = styled(createIconButton(Settings))`
+  position: absolute;
+  right: 0;
+  margin-right: ${({theme}) => theme.space.xl}px;
+  margin-top: ${({theme}) => theme.space.medium}px;
+  ${media.desktop`
+    margin-right: ${({theme}) => theme.space.large}px;
+  `};
+  ${media.tablet`
+    margin-right: ${({theme}) => theme.space.medium}px;
+    margin-top: 0px;
   `};
 `;
 

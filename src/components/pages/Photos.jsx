@@ -1,8 +1,5 @@
 import React from 'react';
-import Prism from 'prismjs';
-import {
-  CodeSnippet,
-} from '../elements';
+import styled from 'styled-components';
 import {
   Button,
   TextButton,
@@ -16,19 +13,36 @@ import {
   Row
 } from '../styled/Views';
 
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+const Item = styled.div`
+  border: 1px solid grey;
+  display: inline-block;
+  width: 25%;
+  height: 300px;
+`;
+
 class Photos extends React.Component {
   render() {
     return (
-      <Section>
-        <Article>
-          <CodeSnippet
-            url='https://raw.githubusercontent.com/mattreiss/chess/chess/src/data/models/BoardModel.js'
-            start={23}
-            end={50}
-            showLines={true}
-          />
-        </Article>
-      </Section>
+      <Container>
+        <Row>
+          <Item>item1</Item>
+          <Item>item2</Item>
+          <Item>item3</Item>
+          <Item>item4</Item>
+          <Item>item5</Item>
+          <Item>item6</Item>
+          <Item>item7</Item>
+          <Item>item8</Item>
+          <Item>item9</Item>
+          <Item>item10</Item>
+          <Item>item11</Item>
+        </Row>
+      </Container>
     )
   }
 }

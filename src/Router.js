@@ -1,49 +1,59 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { MainActions } from './data/redux/actions';
 import * as Pages from './components/pages';
 import MainMenu from './components/elements/MainMenu';
-// import Theme from './theme';
+import Theme from './theme';
 
-const withMainMenu = (Component, name) => () => {
+const Container = styled.div`
+  background-color: ${props => props.theme.colors.light};
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+`;
+
+const withMainMenu = (Component, theme) => () => {
+  console.log("theme", theme);
   return (
-    <div>
-      <MainMenu />
-      <Component selection={name}/>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <MainMenu />
+        <Component />
+      </Container>
+    </ThemeProvider>
   )
 }
 
 class Router extends React.Component {
 
   componentDidMount() {
-    this.props.init();
+    // this.props.init();
   }
 
   render() {
-    let { main } = this.props;
+    let { theme } = this.props.main;
+    // let theme = Theme.self
     let routes = [];
     for (let page in Pages) {
       let PageComponent = Pages[page];
       routes.push(
         <Route key={page}
           path={`/${page}`}
-          component={withMainMenu(PageComponent, page)} />
+          component={withMainMenu(PageComponent, theme)} />
       )
     }
     return (
-      <ThemeProvider theme={main.theme}>
-        <HashRouter>
-          <Switch>
-            <Route exact key={1}
-              path={"/"}
-              component={withMainMenu(Pages.Home)} />
-            {routes}
-          </Switch>
-        </HashRouter>
-      </ThemeProvider>
+      <HashRouter>
+        <Switch>
+          <Route exact key={1}
+            path={"/"}
+            component={withMainMenu(Pages.Home, theme)} />
+          {routes}
+        </Switch>
+      </HashRouter>
     )
   }
 }

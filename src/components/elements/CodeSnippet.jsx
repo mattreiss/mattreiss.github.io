@@ -4,8 +4,9 @@ import Prism from 'prismjs';
 
 const Container = styled.div`
   max-width: 800px;
-  width: 90%;
+  width: 100%;
   margin: auto;
+  font-size: 14px;
 `;
 
 class CodeSnippet extends React.Component {

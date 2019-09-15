@@ -1,30 +1,12 @@
 import { css } from 'styled-components'
 
-export const themedColor = (props) => {
-  for (let key in props.theme.colors) {
-    if (props[key] && typeof props.theme.colors[key] !== 'function') {
-      return props.theme.colors[key];
-    }
-  };
-  return null;
-}
-
-export const themedFontSize = (props) => {
-  for (let key in props.theme.sizes.fontSize) {
-    if (props[key] && typeof props.theme.sizes.fontSize[key] !== 'function') {
-      return props.theme.sizes.fontSize[key];
-    }
-  };
-  return props.theme.sizes.fontSize.normal;
-}
-
 export const themedIconSize = (props) => {
-  for (let key in props.theme.sizes.iconSize) {
-    if (props[key] && typeof props.theme.sizes.iconSize[key] !== 'function') {
-      return props.theme.sizes.iconSize[key];
+  for (let key in props.theme.iconSize) {
+    if (props[key] && typeof props.theme.iconSize[key] !== 'function') {
+      return props.theme.iconSize[key];
     }
   };
-  return props.theme.sizes.iconSize.normal;
+  return props.theme.iconSize.medium;
 }
 
 const sizes = {

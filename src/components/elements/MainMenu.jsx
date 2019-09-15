@@ -10,12 +10,14 @@ import {
   Article,
   Row,
   Menu,
+  SideMenuClose,
   SideMenu
 } from '../styled/Views';
 import {
   Button,
   TextButton,
-  MenuButton
+  MenuButton,
+  SettingsButton
 } from '../styled/Buttons';
 
 const StyledLink = styled(Link)`
@@ -25,7 +27,6 @@ const StyledLink = styled(Link)`
 class MainMenu extends React.Component {
   constructor(props) {
     super(props);
-    console.log("this.props.location", this.props.location)
     let selection = this.props.location.pathname.substring(1);
     if (selection.length <= 1) selection = 'Home';
     this.state = {
@@ -47,6 +48,10 @@ class MainMenu extends React.Component {
     });
   }
 
+  onClickSettingsButton = () => {
+      this.props.history.push('/Settings')
+  }
+
   render() {
     let {
       selection,
@@ -63,9 +68,9 @@ class MainMenu extends React.Component {
       <StyledLink key={option} to={`/${option}`}>
         <TextButton
           onClick={() => this.onClickOption(option)}
-          negative={selection != option}
-          primary={selection == option}
-          large={selection == option}>
+          color={selection == option ? 'primary' : 'negative'}
+          fontSize="medium"
+          pr="xl">
           {option}
         </TextButton>
       </StyledLink>
@@ -73,9 +78,17 @@ class MainMenu extends React.Component {
     return (
       <Header>
         <Nav>
-          <MenuButton onClick={this.onClickMenuButton} dark normal/>
+          <MenuButton
+            onClick={this.onClickMenuButton}
+            color={hideSideMenu ? 'negative' : 'primary'}
+          />
           <Menu>{menu}</Menu>
+          <SideMenuClose onClick={this.onClickMenuButton} hidden={hideSideMenu} />
           <SideMenu hidden={hideSideMenu}>{menu}</SideMenu>
+          <SettingsButton
+            onClick={this.onClickSettingsButton}
+            color={selection == "Settings" ? 'primary' : 'negative'}
+          />
         </Nav>
       </Header>
     )

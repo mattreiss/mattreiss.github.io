@@ -23,7 +23,8 @@
     "seamless-immutable": "^7.1.4",
     "socket.io-client": "^2.2.0",
     "styled-components": "^4.3.2",
-    "styled-icons": "^8.4.2"
+    "styled-icons": "^8.4.2",
+    "styled-system": "^5.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
