@@ -7,14 +7,11 @@ import {
 import {
   Header,
   Nav,
-  Article,
-  Row,
   Menu,
   SideMenuClose,
   SideMenu
 } from '../styled/Views';
 import {
-  Button,
   TextButton,
   MenuButton,
   SettingsButton
@@ -68,7 +65,7 @@ class MainMenu extends React.Component {
       <StyledLink key={option} to={`/${option}`}>
         <TextButton
           onClick={() => this.onClickOption(option)}
-          color={selection == option ? 'primary' : 'negative'}
+          color={selection === option ? 'primary' : 'negative'}
           fontSize="medium"
           pr="xl">
           {option}
@@ -87,7 +84,7 @@ class MainMenu extends React.Component {
           <SideMenu hidden={hideSideMenu}>{menu}</SideMenu>
           <SettingsButton
             onClick={this.onClickSettingsButton}
-            color={selection == "Settings" ? 'primary' : 'negative'}
+            color={selection === "Settings" ? 'primary' : 'negative'}
           />
         </Nav>
       </Header>

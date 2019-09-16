@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { MainActions } from './data/redux/actions';
 import * as Pages from './components/pages';
 import MainMenu from './components/elements/MainMenu';
-import Theme from './theme';
+// import Theme from './theme';
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.light};
@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const withMainMenu = (Component, theme) => () => {
-  console.log("theme", theme);
+  // console.log("theme", theme);
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -37,6 +37,7 @@ class Router extends React.Component {
     let { theme } = this.props.main;
     // let theme = Theme.self
     let routes = [];
+    // eslint-disable-next-line
     for (let page in Pages) {
       let PageComponent = Pages[page];
       routes.push(

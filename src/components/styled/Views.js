@@ -1,9 +1,10 @@
-import styled from 'styled-components';import {
-  space,
-  layout,
-  color,
-  typography
-} from 'styled-system';
+import styled from 'styled-components';
+// import {
+//   space,
+//   layout,
+//   color,
+//   typography
+// } from 'styled-system';
 import {
   media
 } from './_utils';
@@ -43,6 +44,7 @@ export const Article = styled.article`
   background: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.shadow.medium};
   border-radius: ${props => props.theme.radii.medium}px;
+  overflow: scroll;
 `;
 
 export const Paragraph = styled.p`
@@ -58,7 +60,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.h3`
   margin: 0px;
   color: ${props => props.theme.colors.negative};
-  margin-left: ${props => props.theme.space.small}px;
+  margin-left: ${props => props.theme.space.medium}px;
   font-size: ${props => props.theme.fontSizes.small}px;
   font-weight: 600;
 `;
@@ -68,7 +70,12 @@ export const Aside = styled.aside`
 `;
 
 export const Figure = styled.figure`
-
+  ${({width, height}) => width && height && ({
+    width,
+    height
+  })}
+  overflow: hidden;
+  margin: 0px;
 `;
 
 export const Footer = styled.footer`

@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
 
 export const themedIconSize = (props) => {
+  // eslint-disable-next-line
   for (let key in props.theme.iconSize) {
     if (props[key] && typeof props.theme.iconSize[key] !== 'function') {
       return props.theme.iconSize[key];

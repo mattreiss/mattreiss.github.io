@@ -1,9 +1,13 @@
 import CodeSnippet from './CodeSnippet';
-import MainMenu from './MainMenu';
 import Dropdown from './Dropdown';
+import Image from './Image';
+import MainMenu from './MainMenu';
+import Modal from './Modal';
 
 export {
   CodeSnippet,
+  Dropdown,
+  Image,
   MainMenu,
-  Dropdown
+  Modal
 }

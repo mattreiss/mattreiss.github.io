@@ -7,7 +7,8 @@ import {
 } from 'styled-system';
 import {
   Menu,
-  Settings
+  Settings,
+  Close
 } from 'styled-icons/material';
 import {
   themedIconSize,
@@ -85,6 +86,8 @@ export const SettingsButton = styled(createIconButton(Settings))`
     margin-top: 0px;
   `};
 `;
+
+export const CloseButton = styled(createIconButton(Close))``;
 
 export const TestButton = styled(TextButton)`
 

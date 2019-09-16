@@ -1,19 +1,14 @@
 import React from 'react';
-import Prism from 'prismjs';
 import {
   CodeSnippet,
 } from '../elements';
+// import {
+//   TextButton,
+//   MenuButton
+// } from '../styled/Buttons';
 import {
-  Button,
-  TextButton,
-  MenuButton
-} from '../styled/Buttons';
-import {
-  Header,
-  Nav,
   Article,
   Section,
-  Row,
   Title,
   SubTitle,
   Paragraph

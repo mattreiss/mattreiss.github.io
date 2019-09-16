@@ -3,20 +3,16 @@ import { connect } from 'react-redux'
 import { MainActions } from '../../data/redux/actions';
 import Theme from '../../theme';
 import {
-  CodeSnippet,
   Dropdown
 } from '../elements';
+// import {
+//   Button,
+//   TextButton,
+//   MenuButton
+// } from '../styled/Buttons';
 import {
-  Button,
-  TextButton,
-  MenuButton
-} from '../styled/Buttons';
-import {
-  Header,
-  Nav,
   Article,
-  Section,
-  Row
+  Section
 } from '../styled/Views';
 
 class Settings extends React.Component {
