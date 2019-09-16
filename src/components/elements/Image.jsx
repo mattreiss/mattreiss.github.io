@@ -111,7 +111,7 @@ class Image extends React.Component {
           src={src}
           width={width}
           height={height}
-          style={{marginLeft, marginTop}}
+          style={isSquare ? {marginLeft, marginTop} : {}}
         />
       </Figure>
     )
