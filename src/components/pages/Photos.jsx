@@ -105,7 +105,6 @@ class Photos extends React.Component {
     this.mainPath = '/Photos';
     this.state = {
       items: [
-        'russianridge2',
         'sharktooth',
         'slacker',
         'russianridge',
