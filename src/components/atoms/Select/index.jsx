@@ -8,7 +8,7 @@ import {
 } from 'styled-system';
 
 
-const Select = styled.select`
+const SelectContainer = styled.select`
   ${layout}
   ${space}
   ${color}
@@ -18,7 +18,7 @@ const Select = styled.select`
 const Option = styled.option`
 `;
 
-class Dropdown extends React.Component {
+class Select extends React.Component {
   onChange = e => {
     let { onChange } = this.props;
     let { value } = e.target;
@@ -33,7 +33,7 @@ class Dropdown extends React.Component {
       value,
     } = this.props;
     return (
-      <Select
+      <SelectContainer
         onChange={this.onChange}
         value={value}
         fontSize="medium"
@@ -49,9 +49,9 @@ class Dropdown extends React.Component {
             {option.name}
           </Option>
         ))}
-      </Select>
+      </SelectContainer>
     )
   }
 }
 
-export default Dropdown;
+export default Select;

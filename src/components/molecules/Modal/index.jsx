@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import {
   CloseButton,
 } from '../styled/Buttons';
-// import {
-//   Article,
-// } from '../styled/Views';
 
 const Container = styled.div`
   position: fixed;

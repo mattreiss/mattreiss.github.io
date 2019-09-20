@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-class MainMenu extends React.Component {
+class Menu extends React.Component {
   constructor(props) {
     super(props);
     let selection = this.props.location.pathname.substring(1);
@@ -92,4 +92,4 @@ class MainMenu extends React.Component {
   }
 }
 
-export default withRouter(MainMenu);
+export default withRouter(Menu);

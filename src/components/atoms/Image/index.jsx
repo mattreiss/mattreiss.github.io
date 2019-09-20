@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-// import {
-//   CloseButton,
-// } from '../styled/Buttons';
-import {
-  Figure,
-} from '../styled/Views';
 
+const Figure = styled.figure`
+  ${({width, height}) => width && height && ({
+    width,
+    height
+  })}
+  overflow: hidden;
+  margin: 0px;
+`;
 
 const Img = styled.img`
 
