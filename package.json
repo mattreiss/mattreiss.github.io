@@ -34,7 +34,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b master -r git@github.com:mattreiss/mattreiss.github.io.git",
     "storybook": "start-storybook -p 9001 -c ./src/storybook -s ./assets",
-    "build-storybook": "build-storybook -c ./src/storybook -s ./assets"
+    "build-storybook": "build-storybook -c ./src/storybook -s ./assets",
+    "script": "./scripts/script.sh $*",
+    "index": "./scripts/index.sh -r"
   },
   "eslintConfig": {
     "extends": "react-app"

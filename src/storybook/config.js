@@ -4,6 +4,12 @@ import { withInfo } from '@storybook/addon-info';
 import { ThemeProvider } from 'styled-components';
 import Theme from '../theme';
 
+const req = require.context('components', true, /.stories.js$/)
+
+function loadStories() {
+  req.keys().forEach(filename => req(filename))
+}
+
 addDecorator(
   withInfo({
     inline: true,
@@ -11,12 +17,10 @@ addDecorator(
   })
 )
 
-addDecorator(
-  storyFn => <ThemeProvider theme={Theme.self}>{storyFn()}</ThemeProvider>
-)
+// addDecorator(storyFn => (
+//   <ThemeProvider theme={Theme.self}>
+//     {storyFn()}
+//   </ThemeProvider>
+// ))
 
-function loadStories() {
-  require('./stories/components/styled.js');
-  // You can require as many stories as you need.
-}
-configure(loadStories, module);
+configure(loadStories, module)

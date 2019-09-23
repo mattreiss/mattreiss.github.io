@@ -2,11 +2,10 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { store, persistor } from './data/redux';
-import { SetupLogger } from "./tools";
+import { store, persistor } from '../data/redux';
+import { SetupLogger } from "../tools";
 import Router from './Router';
-import "./css/prism.css";
-
+import "../css/prism.css";
 
 
 const GlobalStyle = createGlobalStyle`

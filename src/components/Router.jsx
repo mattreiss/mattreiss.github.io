@@ -1,28 +1,17 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { MainActions } from './data/redux/actions';
 import * as Pages from './components/pages';
 import MainMenu from './components/elements/MainMenu';
-// import Theme from './theme';
+// import Theme from '../theme';
 
-const Container = styled.div`
-  background-color: ${props => props.theme.colors.light};
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  overflow-y: scroll;
-`;
 
-const withMainMenu = (Component, theme) => () => {
-  // console.log("theme", theme);
+const withTheme = (Component, theme) => () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <MainMenu />
-        <Component />
-      </Container>
+      <Component />
     </ThemeProvider>
   )
 }
@@ -43,7 +32,7 @@ class Router extends React.Component {
       routes.push(
         <Route key={page}
           path={`/${page}`}
-          component={withMainMenu(PageComponent, theme)} />
+          component={withTheme(PageComponent, theme)} />
       )
     }
     return (
@@ -51,7 +40,7 @@ class Router extends React.Component {
         <Switch>
           <Route exact key={1}
             path={"/"}
-            component={withMainMenu(Pages.Home, theme)} />
+            component={withTheme(Pages.Home, theme)} />
           {routes}
         </Switch>
       </HashRouter>
