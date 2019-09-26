@@ -2,16 +2,19 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { MainActions } from './data/redux/actions';
-import * as Pages from './components/pages';
-import MainMenu from './components/elements/MainMenu';
+import { MainActions } from '../data/redux/actions';
+import * as Pages from './pages';
+import { Menu } from './organisms';
 // import Theme from '../theme';
 
 
 const withTheme = (Component, theme) => () => {
   return (
     <ThemeProvider theme={theme}>
-      <Component />
+      <div>
+        <Menu />
+        <Component />
+      </div>
     </ThemeProvider>
   )
 }

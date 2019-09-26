@@ -4,18 +4,24 @@ import {
   Link,
   withRouter
 } from 'react-router-dom';
-// import {
-//   Header,
-//   Nav,
-//   Menu,
-//   SideMenuClose,
-//   SideMenu
-// } from '../styled/Views';
-// import {
-//   TextButton,
-//   MenuButton,
-//   SettingsButton
-// } from '../styled/Buttons';
+import { media } from '../../tools/StyledUtils';
+import {
+  Button,
+  Icon
+} from '../atoms';
+
+const TextButton = styled(Button)`
+`;
+
+const SettingsButton = styled(Icon).attrs({
+  name: 'settings'
+})`
+`;
+
+const MenuButton = styled(Icon).attrs({
+  name: 'menu'
+})`
+`;
 
 const Header = styled.header`
   width: 100%;
@@ -31,7 +37,7 @@ const Header = styled.header`
   `};
 `;
 
-const Menu = styled.span`
+const MenuContent = styled.span`
   display: inline-block;
   ${media.tablet`
     display: none;
@@ -144,7 +150,7 @@ class Menu extends React.Component {
             onClick={this.onClickMenuButton}
             color={hideSideMenu ? 'negative' : 'primary'}
           />
-          <Menu>{menu}</Menu>
+          <MenuContent>{menu}</MenuContent>
           <SideMenuClose onClick={this.onClickMenuButton} hidden={hideSideMenu} />
           <SideMenu hidden={hideSideMenu}>{menu}</SideMenu>
           <SettingsButton

@@ -1,19 +1,11 @@
 import React from 'react';
-// import {
-//   CodeSnippet,
-// } from '../elements';
-// import {
-//   Button,
-//   TextButton,
-//   MenuButton
-// } from '../styled/Buttons';
 import {
   Article,
   Section,
   Title,
   SubTitle,
   Paragraph
-} from '../styled/Views';
+} from '../atoms';
 
 class Home extends React.Component {
   render() {

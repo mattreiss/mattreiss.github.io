@@ -9,7 +9,7 @@ const Container = styled.div`
   font-size: 14px;
 `;
 
-class Code extends React.Component {
+class CodeSnippet extends React.Component {
   state = {
   }
 
@@ -49,4 +49,4 @@ class Code extends React.Component {
   }
 }
 
-export default Code;
+export default CodeSnippet;

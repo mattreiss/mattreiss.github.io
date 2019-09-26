@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  CloseButton,
-} from '../styled/Buttons';
+import { Icon } from '../atoms';
 
 const Container = styled.div`
   position: fixed;
@@ -15,7 +13,9 @@ const Container = styled.div`
   background-color: rgba(0,0,0,0.2);
 `;
 
-const ModalCloseButton = styled(CloseButton)`
+const ModalClose = styled(Icon).attrs({
+  name: 'close'
+})`
   position: absolute;
   left: 0;
   top: 0;
@@ -35,7 +35,7 @@ class Modal extends React.Component {
         className={className}
         hidden={hidden}
         onClick={onClickClose}>
-        <ModalCloseButton
+        <ModalClose
           onClick={onClickClose}
           color="dark"
           bg="white"

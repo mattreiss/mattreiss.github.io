@@ -1,6 +1,6 @@
 import Article from "./Article";
 import Button from "./Button";
-import Code from "./Code";
+import CodeSnippet from "./CodeSnippet";
 import Icon from "./Icon";
 import Image from "./Image";
 import Paragraph from "./Paragraph";
@@ -12,7 +12,7 @@ import Title from "./Title";
 export {
     Article,
     Button,
-    Code,
+    CodeSnippet,
     Icon,
     Image,
     Paragraph,

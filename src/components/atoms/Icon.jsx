@@ -14,7 +14,7 @@ class Icon extends React.Component {
       name
     } = this.props;
     let IconComponent = material[name];
-    return <IconComponent />
+    return IconComponent ? <IconComponent /> : <div>!icon?</div>
   }
 }
 

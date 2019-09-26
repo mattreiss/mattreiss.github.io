@@ -2,18 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   CodeSnippet,
-} from '../elements';
-// import {
-//   TextButton,
-//   MenuButton
-// } from '../styled/Buttons';
-import {
   Article,
   Section,
   Title,
   SubTitle,
   Paragraph
-} from '../styled/Views';
+} from '../atoms';
 
 class Code extends React.Component {
   render() {

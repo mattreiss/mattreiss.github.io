@@ -3,17 +3,10 @@ import { connect } from 'react-redux'
 import { MainActions } from '../../data/redux/actions';
 import Theme from '../../theme';
 import {
-  Dropdown
-} from '../elements';
-// import {
-//   Button,
-//   TextButton,
-//   MenuButton
-// } from '../styled/Buttons';
-import {
+  Select,
   Article,
   Section
-} from '../styled/Views';
+} from '../atoms';
 
 class Settings extends React.Component {
   onChangeTheme = (theme) => {
@@ -25,13 +18,12 @@ class Settings extends React.Component {
     return (
       <Section>
         <Article>
-          <Dropdown
-            onChange={this.onChangeTheme}
-            value={theme.currentTheme}
-            options={[
+          <Select options={[
               {value: Theme.DEFAULT, name: 'Light'},
               {value: Theme.DARK, name: 'Dark'},
             ]}
+            onChange={this.onChangeTheme}
+            value={theme.currentTheme}
           />
         </Article>
       </Section>

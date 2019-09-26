@@ -4,23 +4,16 @@ import {
   Link,
   withRouter
 } from 'react-router-dom';
+import { media } from '../../tools/StyledUtils';
+import {
+  Image,
+} from '../atoms';
 import {
   Modal,
-  Image
-} from '../elements';
-import {
-  media
-} from '../styled/_utils';
+  ResponsiveImage
+} from '../molecules'
 // import {
-//   Button,
-//   TextButton,
-//   MenuButton
-// } from '../styled/Buttons';
-// import {
-//   Header,
-//   Nav,
-//   Article,
-// } from '../styled/Views';
+// } from '../organisms';
 
 const Container = styled.div`
   width: 100%;
@@ -36,68 +29,12 @@ const StyledLink = styled(Link)`
   margin: 0px;
 `;
 
-const MobileImage = styled(Image).attrs(props => ({
-  scale: 1,
-  isSquare: true
-}))`
-  display: none;
-  ${media.phone`
-    display: inline-block;
-  `};
-`;
-
-const TabletImage = styled(Image).attrs(props => ({
-  scale: 2,
-  isSquare: true
-}))`
-  display: none;
-  ${media.tablet`
-    display: inline-block;
-  `};
-  ${media.phone`
-    display: none;
-  `};
-`;
-
-const DesktopImage = styled(Image).attrs(props => ({
-  scale: 3,
-  isSquare: true
-}))`
-  display: none;
-  ${media.desktop`
-    display: inline-block;
-  `};
-  ${media.tablet`
-    display: none;
-  `};
-`;
-
-const GiantImage = styled(Image).attrs(props => ({
-  scale: 4,
-  isSquare: true
-}))`
-  display: inline-block;
-  ${media.desktop`
-    display: none;
-  `};
-`;
-
 const ModalImage = styled(Image).attrs(props => ({
   scale: 1,
   isSquare: false
 }))`
   overflow: scroll;
 `;
-const ResponsiveImage = (props) => {
-  return (
-    <React.Fragment>
-      <MobileImage {...props} />
-      <TabletImage {...props} />
-      <DesktopImage {...props} />
-      <GiantImage {...props} />
-    </React.Fragment>
-  )
-}
 
 class Photos extends React.Component {
   constructor(props) {
@@ -121,16 +58,24 @@ class Photos extends React.Component {
     this.props.history.push(this.mainPath);
   }
 
-  shouldModalHide = () => {
+  getPhotoPath() {
     let path = this.props.location.pathname;
-    return path.replace("/Photos", "").length < 2;
+    return path.replace(this.mainPath, "");
+  }
+
+  getPhotoName() {
+    let key =  this.getPhotoPath().replace("/", "");
+    return this.state.items[key];
+  }
+
+  shouldModalHide = () => {
+    return this.getPhotoPath().length <= 1;
   }
 
   renderModalContent() {
-    let path = this.props.location.pathname.replace("/Photos/", "");
     return (
       <ModalImage
-        name={this.state.items[path]}
+        name={this.getPhotoName()}
         quality="hd"
       />
     );

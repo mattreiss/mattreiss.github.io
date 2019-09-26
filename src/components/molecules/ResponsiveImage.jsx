@@ -4,13 +4,8 @@ import {
   Link,
   withRouter
 } from 'react-router-dom';
-import {
-  Modal,
-  Image
-} from '../elements';
-import {
-  media
-} from '../styled/_utils';
+import { media } from '../../tools/StyledUtils';
+import { Image } from '../atoms';
 
 const MobileImage = styled(Image).attrs(props => ({
   scale: 1,
