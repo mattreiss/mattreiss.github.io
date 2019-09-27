@@ -12,18 +12,29 @@ import {
   IconButton
 } from '../molecules';
 
+const SettingsButton = styled(IconButton).attrs(props => ({
+  name: 'Settings'
+}))`
+  float: right;
+`;
+
+const MenuButton = styled(IconButton).attrs(props => ({
+  name: 'Menu'
+}))`
+  float: left;
+  display: none;
+  ${media.tablet`
+    display: inline-block;
+  `};
+`;
+
 const Header = styled.header`
   width: 100%;
-  padding: ${props => props.theme.space.xl}px;
+  min-height: ${props => props.theme.headerHeight}px;
+  padding: ${props => props.theme.space.medium}px;
   background: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.shadow.medium};
   position: relative;
-  ${media.desktop`
-    padding: ${props => props.theme.space.large}px;
-  `};
-  ${media.phone`
-    padding: ${props => props.theme.space.medium}px;
-  `};
 `;
 
 const MenuContent = styled.span`
@@ -135,16 +146,14 @@ class Menu extends React.Component {
     return (
       <Header>
         <Nav>
-          <IconButton
-            name="Menu"
+          <MenuButton
             onClick={this.onClickMenuButton}
             color={hideSideMenu ? 'negative' : 'primary'}
           />
           <MenuContent>{menu}</MenuContent>
           <SideMenuClose onClick={this.onClickMenuButton} hidden={hideSideMenu} />
           <SideMenu hidden={hideSideMenu}>{menu}</SideMenu>
-          <IconButton
-            name="Settings"
+          <SettingsButton
             onClick={this.onClickSettingsButton}
             color={selection === "Settings" ? 'primary' : 'negative'}
           />

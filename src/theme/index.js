@@ -34,6 +34,7 @@ export default class Theme {
       large: '4px 4px 10px rgba(0,0,0,0.4)',
       xl: '5px 5px 10px rgba(0,0,0,0.5)',
     }
+    this.headerHeight = 64;
   }
 
   static self = new Theme()

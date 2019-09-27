@@ -4,15 +4,22 @@ import {
   Article,
   Title
 } from '../atoms';
+import {
+  PageTemplate
+} from '../templates';
 
 class Stacker extends React.Component {
   render() {
     return (
-      <Section>
-        <Article>
-          <Title>Stacker</Title>
-        </Article>
-      </Section>
+      <PageTemplate
+        content={(
+          <Section>
+            <Article>
+              <Title>Stacker</Title>
+            </Article>
+          </Section>
+        )}
+      />
     )
   }
 }

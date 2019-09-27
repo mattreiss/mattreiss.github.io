@@ -1,29 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Menu } from './components/organisms';
-
-const Container = styled.div`
-  background-color: ${props => props.theme.colors.light};
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  overflow-y: scroll;
-`;
+import { Modal } from '../molecules';
 
 class ModalTemplate extends React.Component {
   render() {
     let {
       header,
       content,
+      children,
       footer
     } = this.props;
     return (
-      <Container>
-        <Menu />
+      <Modal {...this.props} >
         {header}
         {content}
+        {children}
         {footer}
-      </Container>
+      </Modal>
     )
   }
 }

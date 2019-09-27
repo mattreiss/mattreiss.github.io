@@ -8,15 +8,12 @@ import {
   Image,
 } from '../atoms';
 import {
-  Modal,
   ResponsiveImage
 } from '../molecules'
-// import {
-// } from '../organisms';
-
-const Container = styled.div`
-  width: 100%;
-`;
+import {
+  PageTemplate,
+  ModalTemplate
+} from '../templates';
 
 const Grid = styled.div`
   margin: auto;
@@ -104,14 +101,14 @@ class Photos extends React.Component {
   render() {
     let isModalHidden = this.shouldModalHide();
     return (
-      <Container>
-        {this.renderItems()}
-        <Modal
-          hidden={isModalHidden}
-          onClickClose={this.onClickCloseModal}>
-          {!isModalHidden && this.renderModalContent()}
-        </Modal>
-      </Container>
+      <PageTemplate>
+          {this.renderItems()}
+          <ModalTemplate
+            hidden={isModalHidden}
+            onClickClose={this.onClickCloseModal}
+            content={!isModalHidden && this.renderModalContent()}
+          />
+      </PageTemplate>
     )
   }
 }

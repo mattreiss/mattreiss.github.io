@@ -4,17 +4,13 @@ import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { MainActions } from '../data/redux/actions';
 import * as Pages from './pages';
-import { Menu } from './organisms';
 // import Theme from '../theme';
 
 
 const withTheme = (Component, theme) => () => {
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Menu />
-        <Component />
-      </div>
+      <Component />
     </ThemeProvider>
   )
 }

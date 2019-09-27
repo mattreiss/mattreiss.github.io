@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Menu } from './components/organisms';
+import { Menu } from '../organisms';
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.light};
@@ -15,13 +15,14 @@ class PageTemplate extends React.Component {
     let {
       header,
       content,
-      footer
+      children,
+      footer,
     } = this.props;
     return (
       <Container>
-        <Menu />
-        {header}
+        {header || <Menu />}
         {content}
+        {children}
         {footer}
       </Container>
     )

@@ -7,6 +7,9 @@ import {
   Article,
   Section
 } from '../atoms';
+import {
+  PageTemplate
+} from '../templates';
 
 class Settings extends React.Component {
   onChangeTheme = (theme) => {
@@ -16,17 +19,21 @@ class Settings extends React.Component {
   render() {
     let { theme } = this.props.main;
     return (
-      <Section>
-        <Article>
-          <Select options={[
-              {value: Theme.DEFAULT, name: 'Light'},
-              {value: Theme.DARK, name: 'Dark'},
-            ]}
-            onChange={this.onChangeTheme}
-            value={theme.currentTheme}
-          />
-        </Article>
-      </Section>
+      <PageTemplate
+        content={(
+          <Section>
+            <Article>
+              <Select options={[
+                  {value: Theme.DEFAULT, name: 'Light'},
+                  {value: Theme.DARK, name: 'Dark'},
+                ]}
+                onChange={this.onChangeTheme}
+                value={theme.currentTheme}
+              />
+            </Article>
+          </Section>
+        )}
+      />
     )
   }
 }
