@@ -1,9 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  Link,
-  withRouter
-} from 'react-router-dom';
 import { media } from '../../tools/StyledUtils';
 import { Image } from '../atoms';
 

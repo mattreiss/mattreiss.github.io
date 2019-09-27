@@ -4,7 +4,6 @@ import {
   Link,
   withRouter
 } from 'react-router-dom';
-import { media } from '../../tools/StyledUtils';
 import {
   Image,
 } from '../atoms';

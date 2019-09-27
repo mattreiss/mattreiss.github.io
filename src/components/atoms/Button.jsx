@@ -12,6 +12,7 @@ export default styled.button`
   border: none;
   opacity: ${p => p.disabled ? 0.25 : 1};
   cursor: ${p => p.disabled ? 'not-allowed' : 'pointer'};
+  background-color: transparent;
 
   &:hover {
     filter: brightness(110%);

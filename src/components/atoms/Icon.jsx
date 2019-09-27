@@ -1,20 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
-import {
-  space,
-  layout,
-  color,
-  typography
-} from 'styled-system';
-import { material } from 'styled-icons';
+import * as material from 'styled-icons/material';
 
 class Icon extends React.Component {
   render() {
     let {
-      name
+      name,
+      size,
+      className
     } = this.props;
     let IconComponent = material[name];
-    return IconComponent ? <IconComponent /> : <div>!icon?</div>
+    return IconComponent ? <IconComponent size={size} className={className} /> : <i>i</i>
   }
 }
 

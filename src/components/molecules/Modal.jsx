@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const ModalClose = styled(Icon).attrs({
-  name: 'close'
+  name: 'Close'
 })`
   position: absolute;
   left: 0;

@@ -6,22 +6,11 @@ import {
 } from 'react-router-dom';
 import { media } from '../../tools/StyledUtils';
 import {
-  Button,
-  Icon
+  Button
 } from '../atoms';
-
-const TextButton = styled(Button)`
-`;
-
-const SettingsButton = styled(Icon).attrs({
-  name: 'settings'
-})`
-`;
-
-const MenuButton = styled(Icon).attrs({
-  name: 'menu'
-})`
-`;
+import {
+  IconButton
+} from '../molecules';
 
 const Header = styled.header`
   width: 100%;
@@ -76,7 +65,7 @@ const SideMenu = styled.span`
     display: ${({hidden}) => hidden ? 'none' : 'block'};
   `};
 
-  ${TextButton} {
+  ${Button} {
     display: block;
     text-align: left;
   }
@@ -134,26 +123,28 @@ class Menu extends React.Component {
       // 'Contact'
     ].forEach(option => menu.push(
       <StyledLink key={option} to={`/${option}`}>
-        <TextButton
+        <Button
           onClick={() => this.onClickOption(option)}
           color={selection === option ? 'primary' : 'negative'}
           fontSize="medium"
           pr="xl">
           {option}
-        </TextButton>
+        </Button>
       </StyledLink>
     ));
     return (
       <Header>
         <Nav>
-          <MenuButton
+          <IconButton
+            name="Menu"
             onClick={this.onClickMenuButton}
             color={hideSideMenu ? 'negative' : 'primary'}
           />
           <MenuContent>{menu}</MenuContent>
           <SideMenuClose onClick={this.onClickMenuButton} hidden={hideSideMenu} />
           <SideMenu hidden={hideSideMenu}>{menu}</SideMenu>
-          <SettingsButton
+          <IconButton
+            name="Settings"
             onClick={this.onClickSettingsButton}
             color={selection === "Settings" ? 'primary' : 'negative'}
           />

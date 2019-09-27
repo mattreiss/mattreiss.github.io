@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function help() {
-  # echo "Creates index.js files for ../src"
+  # echo "Creates index.js files for ../src/components"
   echo "index.sh <optionalDirectory> <optionalOptions>"
 }
 
@@ -21,7 +21,7 @@ if [[ -d ./$1 ]]; then
 fi
 
 function createIndex() {
-  echo "indexing $(pwd)"
+  # echo "indexing $(pwd)"
   local folderList="$(ls -p | sort -r | grep /)"
   local fileList="$(ls -p | sort -r | grep -v /)"
   local importStrings=""
