@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon } from '../atoms';
+import { IconButton } from '../molecules';
 
 const Container = styled.div`
   position: fixed;
@@ -13,13 +13,13 @@ const Container = styled.div`
   background-color: rgba(0,0,0,0.2);
 `;
 
-const ModalClose = styled(Icon).attrs({
-  name: 'Close'
-})`
-  position: absolute;
-  left: 0;
-  top: 0;
+const ModalClose = styled(IconButton).attrs(props => ({
+  name: 'Close',
+}))`
   border-radius: 50%;
+  position: fixed;
+  top: ${p => p.theme.space.medium}px;
+  left: ${p => p.theme.space.medium}px;
 `;
 
 class Modal extends React.Component {
@@ -37,12 +37,7 @@ class Modal extends React.Component {
         onClick={onClickClose}>
         <ModalClose
           onClick={onClickClose}
-          color="dark"
-          bg="white"
-          shadow="medium"
-          m="xxl"
-          p="large"
-          large
+          color="white"
         />
         {children}
       </Container>
