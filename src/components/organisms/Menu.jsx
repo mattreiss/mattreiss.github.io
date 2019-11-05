@@ -6,7 +6,8 @@ import {
 } from 'react-router-dom';
 import { media } from '../../tools/StyledUtils';
 import {
-  Button
+  Button,
+  Icon
 } from '../atoms';
 import {
   IconButton
@@ -38,6 +39,8 @@ const Header = styled.header`
 `;
 
 const MenuContent = styled.span`
+  height: 48px;
+  padding: ${props => props.theme.space.xs}px;
   display: inline-block;
   ${media.tablet`
     display: none;
@@ -45,9 +48,19 @@ const MenuContent = styled.span`
   ${media.phone`
     display: none;
   `};
+`;
 
-  & > * {
-  }
+const MenuTitle = styled.span`
+  margin-top: 10px;
+  color: ${props => props.theme.colors.negative};
+  font-size:  ${props => props.theme.fontSizes.large}px;
+  display: none;
+  ${media.tablet`
+    display: inline-block;
+  `};
+  ${media.phone`
+    display: inline-block;
+  `};
 `;
 
 const SideMenuClose = styled.span`
@@ -90,7 +103,9 @@ const Nav = styled.nav`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  margin-top: 2px;
 `;
+
 
 class Menu extends React.Component {
   constructor(props) {
@@ -126,20 +141,25 @@ class Menu extends React.Component {
       hideSideMenu
     } = this.state
     let menu = [];
-    [ 'Home',
-      'Photos',
-      'Code',
-      // 'Skate',
-      // 'About',
-      // 'Contact'
+    [
+      {title: 'Home', icon: 'Home', route: 'Home'},
+      {title: 'Photos', icon: 'PhotoLibrary', route: 'Photos'},
+      {title: 'Code', icon: 'CodeBox', route: 'Code'},
+      {title: 'Stacker', icon: 'Stack', route: 'Stacker'},
     ].forEach(option => menu.push(
-      <StyledLink key={option} to={`/${option}`}>
+      <StyledLink key={option.route} to={`/${option.route}`}>
         <Button
-          onClick={() => this.onClickOption(option)}
-          color={selection === option ? 'primary' : 'negative'}
+          onClick={() => this.onClickOption(option.route)}
+          color={selection === option.route ? 'primary' : 'negative'}
           fontSize="medium"
           pr="xl">
-          {option}
+          <Icon
+            mt={-6}
+            mr="medium"
+            p="small"
+            name={option.icon}
+          />
+          {option.title}
         </Button>
       </StyledLink>
     ));
@@ -151,6 +171,7 @@ class Menu extends React.Component {
             color={hideSideMenu ? 'negative' : 'primary'}
           />
           <MenuContent>{menu}</MenuContent>
+          <MenuTitle>{selection}</MenuTitle>
           <SideMenuClose onClick={this.onClickMenuButton} hidden={hideSideMenu} />
           <SideMenu hidden={hideSideMenu}>{menu}</SideMenu>
           <SettingsButton

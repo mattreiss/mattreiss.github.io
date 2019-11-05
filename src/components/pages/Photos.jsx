@@ -38,6 +38,10 @@ class Photos extends React.Component {
     this.mainPath = '/Photos';
     this.state = {
       items: [
+        'riverofdreams',
+        'halfdome',
+        'hotcreek',
+        'mammoth',
         'sharktooth',
         'slacker',
         'russianridge',
