@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { MainActions } from '../data/redux/actions';
@@ -7,13 +7,16 @@ import * as Pages from './pages';
 // import Theme from '../theme';
 
 
-const withTheme = (Component, theme) => () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Component />
-    </ThemeProvider>
-  )
-}
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    font-family: Roboto;
+  }
+
+  body {
+    margin: 0;
+  }
+`
 
 class Router extends React.Component {
 
@@ -31,18 +34,21 @@ class Router extends React.Component {
       routes.push(
         <Route key={page}
           path={`/${page}`}
-          component={withTheme(PageComponent, theme)} />
+          component={PageComponent} />
       )
     }
     return (
-      <HashRouter>
-        <Switch>
-          <Route exact key={1}
-            path={"/"}
-            component={withTheme(Pages.Home, theme)} />
-          {routes}
-        </Switch>
-      </HashRouter>
+      <ThemeProvider theme={theme}>
+        <HashRouter>
+          <Switch>
+            <Route exact key={1}
+              path={"/"}
+              component={Pages.Home} />
+            {routes}
+          </Switch>
+        </HashRouter>
+        <GlobalStyle />
+    </ThemeProvider>
     )
   }
 }

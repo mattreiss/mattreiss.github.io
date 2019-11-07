@@ -7,7 +7,8 @@ const _scale = (base) => ({
   medium: base,
   large: base * 1.5,
   xl: base * 2,
-  xxl: base * 3
+  xxl: base * 3,
+  xxxl: base * 4
 });
 export default class Theme {
   static DEFAULT = 'DefaultColors';

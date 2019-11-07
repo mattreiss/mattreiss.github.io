@@ -6,9 +6,7 @@ import {
   typography
 } from 'styled-system';
 
-export default styled.p`
-  font-size: ${props => props.theme.fontSizes.medium}px;
-  padding-left: ${props => props.theme.space.small}px;
+export default styled.form`
   ${color}
   ${layout}
   ${space}

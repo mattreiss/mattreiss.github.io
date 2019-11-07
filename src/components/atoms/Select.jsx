@@ -9,6 +9,15 @@ import {
 
 
 const SelectContainer = styled.select`
+  border-radius: 8px;
+  padding: 8px;
+  background-color: transparent;
+  color: ${p => p.theme.colors.black};
+  border: 1px solid ${p => p.theme.colors.negative};
+  font-size: ${p => p.theme.fontSizes.medium}px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
   ${layout}
   ${space}
   ${color}
@@ -16,6 +25,9 @@ const SelectContainer = styled.select`
 `;
 
 const Option = styled.option`
+  padding: 8px;
+  color: ${p => p.theme.colors.black};
+  font-size: ${p => p.theme.fontSizes.medium}px;
 `;
 
 class Select extends React.Component {
@@ -36,12 +48,8 @@ class Select extends React.Component {
       <SelectContainer
         onChange={this.onChange}
         value={value}
-        fontSize="medium"
-        bg="negative"
-        color="white"
-        m="large"
-        minWidth="medium"
-        height="xs">
+        mx="medium"
+        {...this.props}>
         {options.map(option => (
           <Option
             key={option.value}

@@ -13,8 +13,9 @@ import {
 
 class Settings extends React.Component {
   onChangeTheme = (theme) => {
-    Theme.self.init(theme);
-    this.props.setTheme(Theme.self);
+    let newTheme = new Theme();
+    newTheme.init(theme);
+    this.props.setTheme(newTheme);
   }
   render() {
     let { theme } = this.props.main;
