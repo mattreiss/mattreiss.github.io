@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  Icon,
+  // Icon,
   Button,
   Form,
   Input,
   Label,
-  Image,
+  // Image,
   Section,
   Select
 } from '../atoms';
@@ -23,11 +23,6 @@ const Group = styled(Section)`
   padding: 8px;
   & > * {
   }
-`;
-
-const Divide = styled.div`
-  width: 50%;
-  display:inline-block;
 `;
 
 export default class StackerForm extends React.Component {
@@ -50,6 +45,10 @@ export default class StackerForm extends React.Component {
 
   onSubmit = () => {
     const { onSubmit } = this.props;
+    const { data } = this.state;
+    if (typeof onSubmit === 'function') {
+      onSubmit(data);
+    }
   }
 
   onChange = (e) => {
