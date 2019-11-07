@@ -231,7 +231,7 @@ export default class StackerForm extends React.Component {
             color="white"
             fontSize="medium"
             onClick={this.onSubmit}>
-            Submit
+            Start
           </Button>
         </Group>
       </Form>

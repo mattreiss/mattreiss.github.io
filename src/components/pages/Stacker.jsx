@@ -45,6 +45,7 @@ class Stacker extends React.Component {
         <Section>
           {this.state.connected ? (
             <Article>
+              <Title textAlign="center">Stacker Options</Title>
               <StackerForm onSubmit={this.onSubmitStackerForm} />
             </Article>
           ) : (
