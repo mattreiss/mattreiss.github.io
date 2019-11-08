@@ -9,8 +9,10 @@ import {
   // Image,
   Section,
   Select,
-  IconButton
 } from '../atoms';
+import {
+  IconButton
+} from '../molecules';
 
 const BlendMode = {
   LIGHTEN: 8,
@@ -23,6 +25,7 @@ const Group = styled(Section)`
   justify-content: center;
   padding: 8px;
   & > * {
+    display: inline-block;
   }
 `;
 
@@ -79,7 +82,7 @@ export default class StackerForm extends React.Component {
             onChange={this.onChange}/>
           <IconButton
             onClick={this.onClickFolder}
-            name="folder"
+            name="Folder"
             color="negative"
             size="medium"/>
         </Group>
@@ -237,6 +240,7 @@ export default class StackerForm extends React.Component {
         <Group>
           <Button
             width="xxxl"
+            height="xs"
             bg="primary"
             color="white"
             fontSize="medium"

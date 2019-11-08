@@ -5,14 +5,21 @@ import {
 } from '../atoms';
 
 class IconButton extends React.Component {
+  filterProps() {
+    const props = Object.assign({}, this.props);
+    delete props.size;
+    return props;
+  }
+
   render() {
     let {
       color,
       name,
-      size
+      size,
+      onClick
     } = this.props;
     return (
-      <Button {...this.props}>
+      <Button {...this.filterProps()}>
         <Icon
           color={color}
           name={name}

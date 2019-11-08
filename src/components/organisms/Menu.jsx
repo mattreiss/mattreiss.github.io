@@ -17,6 +17,7 @@ const SettingsButton = styled(IconButton).attrs(props => ({
   name: 'Settings'
 }))`
   float: right;
+  margin-top: ${props => props.theme.space.small}px;
 `;
 
 const MenuButton = styled(IconButton).attrs(props => ({
@@ -26,6 +27,7 @@ const MenuButton = styled(IconButton).attrs(props => ({
   display: none;
   ${media.tablet`
     display: inline-block;
+    margin-top: ${props => props.theme.space.small}px;
   `};
 `;
 
@@ -40,7 +42,7 @@ const Header = styled.header`
 
 const MenuContent = styled.span`
   height: 48px;
-  padding: ${props => props.theme.space.xs}px;
+  padding: ${props => props.theme.space.medium}px;
   display: inline-block;
   ${media.tablet`
     display: none;
@@ -51,9 +53,10 @@ const MenuContent = styled.span`
 `;
 
 const MenuTitle = styled.span`
-  margin-top: 10px;
   color: ${props => props.theme.colors.negative};
   font-size:  ${props => props.theme.fontSizes.large}px;
+  height: 48px;
+  padding: ${props => props.theme.space.medium}px;
   display: none;
   ${media.tablet`
     display: inline-block;
@@ -92,6 +95,7 @@ const SideMenu = styled.span`
   ${Button} {
     display: block;
     text-align: left;
+    margin-top: 16px;
   }
 `;
 
@@ -154,7 +158,6 @@ class Menu extends React.Component {
           fontSize="medium"
           pr="xl">
           <Icon
-            mt={-6}
             mr="medium"
             p="small"
             name={option.icon}
