@@ -10,11 +10,16 @@ import {
   typography
 } from 'styled-system';
 
+const styles = `
+  cursor: pointer;
+`;
+
 const StyledA = styled.a`
   ${color}
   ${layout}
   ${space}
   ${typography}
+  ${styles}
 `;
 
 const StyledLink = styled(Link)`
@@ -22,6 +27,7 @@ const StyledLink = styled(Link)`
   ${layout}
   ${space}
   ${typography}
+  ${styles}
 `;
 
 export default (props) => {
