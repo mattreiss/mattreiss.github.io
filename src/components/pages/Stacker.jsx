@@ -6,7 +6,6 @@ import {
   Article,
   Paragraph,
   Title,
-  SubTitle,
   Link
 } from '../atoms';
 import {
@@ -37,6 +36,14 @@ class Stacker extends React.Component {
 
   onSubmitStackerForm(form) {
     console.log("submit", form);
+    let formString =  JSON.stringify(form);
+    for (let key in form) {
+      formString = formString.replace('"' + key + '"', key)
+    }
+    Api.runStacker("Stacker", [
+      form.selectedFolder,
+      formString
+    ])
   }
 
   render() {

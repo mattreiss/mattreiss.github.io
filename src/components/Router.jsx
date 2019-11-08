@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    background-color: ${p => p.theme.colors.light};
   }
 `
 
@@ -26,6 +27,7 @@ class Router extends React.Component {
 
   render() {
     let { theme } = this.props.main;
+    console.log("render theme", theme);
     // let theme = Theme.self
     let routes = [];
     // eslint-disable-next-line

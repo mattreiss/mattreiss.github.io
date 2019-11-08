@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  Icon,
+  // Icon,
   Button,
   Form,
   Input,
   Label,
-  Image,
+  // Image,
   Section,
   Select,
   IconButton
@@ -26,11 +26,6 @@ const Group = styled(Section)`
   }
 `;
 
-const Divide = styled.div`
-  width: 50%;
-  display:inline-block;
-`;
-
 export default class StackerForm extends React.Component {
   state = {
     data: {
@@ -39,7 +34,7 @@ export default class StackerForm extends React.Component {
       stackLength: 12,
       stackGrowth: 1,
       autoAlign: false,
-      action: null,
+      action: 'null',
       displacement: 1,
       video: "1080@24",
       delayLength: 0,
@@ -51,6 +46,11 @@ export default class StackerForm extends React.Component {
 
   onSubmit = () => {
     const { onSubmit } = this.props;
+    const { data } = this.state;
+    if (data.action === 'null') data.action = null;
+    if (typeof onSubmit === 'function') {
+      onSubmit(data);
+    }
   }
 
   onChange = (e) => {
@@ -137,7 +137,7 @@ export default class StackerForm extends React.Component {
             Action
           </Label>
           <Select options={[
-              {value: null, name: 'None'},
+              {value: 'null', name: 'None'},
               {value: 'Action', name: 'Action'},
             ]}
             name="action"
