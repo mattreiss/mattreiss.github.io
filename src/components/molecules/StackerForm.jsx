@@ -8,7 +8,8 @@ import {
   Label,
   Image,
   Section,
-  Select
+  Select,
+  IconButton
 } from '../atoms';
 
 const BlendMode = {
@@ -60,6 +61,10 @@ export default class StackerForm extends React.Component {
     this.setState({data});
   }
 
+  onClickFolder = () => {
+    console.log("select folder");
+  }
+
   render() {
     const { data } = this.state;
     return (
@@ -72,6 +77,11 @@ export default class StackerForm extends React.Component {
             name="selectedFolder"
             value={data.selectedFolder}
             onChange={this.onChange}/>
+          <IconButton
+            onClick={this.onClickFolder}
+            name="folder"
+            color="negative"
+            size="medium"/>
         </Group>
         <Group>
           <Label>Blend Mode</Label>
