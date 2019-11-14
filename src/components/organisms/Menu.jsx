@@ -146,12 +146,11 @@ class Menu extends React.Component {
     } = this.state
     let menu = [];
     [
-      {title: 'Home', icon: 'Home', route: 'Home'},
-      {title: 'Photos', icon: 'PhotoLibrary', route: 'Photos'},
-      {title: 'Code', icon: 'CodeBox', route: 'Code'},
-      {title: 'Stacker', icon: 'Stack', route: 'Stacker'},
+      {title: 'Photos', icon: 'PhotoLibrary', route: '/Photos'},
+      {title: 'Code', icon: 'CodeBox', route: '/Code'},
+      {title: 'Stacker', icon: 'Stack', route: '/Stacker'},
     ].forEach(option => menu.push(
-      <StyledLink key={option.route} to={`/${option.route}`}>
+      <StyledLink key={option.route} to={option.route}>
         <Button
           onClick={() => this.onClickOption(option.route)}
           color={selection === option.route ? 'primary' : 'negative'}

@@ -45,7 +45,7 @@ class Router extends React.Component {
           <Switch>
             <Route exact key={1}
               path={"/"}
-              component={Pages.Home} />
+              component={Pages.Photos} />
             {routes}
           </Switch>
         </HashRouter>
