@@ -8,12 +8,10 @@ import {
 } from 'styled-system';
 
 const StyledUl = styled.ul`
-  padding: 8px;
-  background-color: transparent;
-  color: ${p => p.theme.colors.black};
   display: flex;
   flex-direction: ${p => p.flexDirection};
   list-style-type: none;
+  overflow: scroll;
   ${color}
   ${layout}
   ${space}
@@ -22,7 +20,6 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   display: flex;
-  padding: 8px;
   ${color}
   ${layout}
   ${space}
@@ -36,13 +33,15 @@ export default class List extends React.Component {
     for (let index = 0; index < data.length; index++) {
       let item = data[index];
       items.push(
-        <StyledLi>
+        <StyledLi key={index}>
           {renderItem({item, index})}
         </StyledLi>
       )
     }
     return (
-      <StyledUl flexDirection={horizontal ? 'row' : 'column'}>
+      <StyledUl
+        {...this.props}
+        flexDirection={horizontal ? 'row' : 'column'}>
         {items}
       </StyledUl>
     )

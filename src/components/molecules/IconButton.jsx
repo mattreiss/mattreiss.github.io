@@ -15,8 +15,7 @@ class IconButton extends React.Component {
     let {
       color,
       name,
-      size,
-      onClick
+      size
     } = this.props;
     return (
       <Button {...this.filterProps()}>

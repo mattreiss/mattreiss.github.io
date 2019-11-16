@@ -7,11 +7,14 @@ import {
 } from 'styled-system';
 
 export default styled.button`
+  min-width: 120px;
+  height: 40px;
+  color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.primary};
   border-radius: ${props => props.theme.radii.medium}px;
   border: none;
   opacity: ${p => p.disabled ? 0.25 : 1};
   cursor: ${p => p.disabled ? 'not-allowed' : 'pointer'};
-  background-color: transparent;
 
   &:hover {
     filter: brightness(110%);

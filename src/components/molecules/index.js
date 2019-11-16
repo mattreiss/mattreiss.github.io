@@ -3,6 +3,7 @@ import ImageList from "./ImageList";
 import Modal from "./Modal";
 import ResponsiveImage from "./ResponsiveImage";
 import StackerForm from "./StackerForm";
+import * as stories from "./stories";
 
 export {
     IconButton,
@@ -10,4 +11,5 @@ export {
     Modal,
     ResponsiveImage,
     StackerForm,
+    stories,
 }

@@ -78,7 +78,8 @@ class Image extends React.Component {
       quality,
       name,
       isSquare,
-      fillHeight
+      scale,
+      src
     } = this.props;
     let {
       width,
@@ -86,23 +87,23 @@ class Image extends React.Component {
       marginLeft,
       marginTop
     } = this.state;
-    let src = "";
-    try {
-      src = require(`../../assets/jpg/${name}/${quality}.jpg`);
-    } catch (e) {
-      console.log("File Not Found!", `../../assets/jpg/${name}/${quality}.jpg`);
-      return <div />
+    if (!src) {
+      try {
+        src = require(`../../assets/jpg/${name}/${quality}.jpg`);
+      } catch (e) {
+        console.log("File Not Found!", `../../assets/jpg/${name}/${quality}.jpg`);
+        return <div />
+      }
     }
 
     let squareWidth = this.aspectRatio < 1 ? height : width;
     let squareHeight = squareWidth;
 
-    if (fillHeight) {
-      width = 'min-content';
-      height = fillHeight;
-      isSquare = false;
-    }
-    if (!width || !height) {
+    let scaledWidth = isSquare ? squareWidth : width;
+    let scaledHeight = isSquare ? squareHeight  : null;
+    let scaledStyle = isSquare ? {marginLeft, marginTop} : {};
+
+    if (scale && (!width || !height)) {
       return (
         <Img
           ref={ref => this.img = ref}
@@ -112,19 +113,27 @@ class Image extends React.Component {
         />
       )
     }
+
+    if (!scale) {
+      scaledStyle = {};
+      scaledWidth = null;
+      scaledHeight = null;
+      width = this.props.width;
+      height = this.props.height;
+    }
+
     return (
       <Figure
         className={className}
-        width={isSquare ? squareWidth : width}
-        height={isSquare ? squareHeight  : null}
-        overflow={fillHeight ? 'initial' : 'hidden'}
-        style={{marginTop: isSquare ? -4 : 0}}>
+        width={scaledWidth}
+        height={scaledHeight}
+        style={scale ? {marginTop: isSquare ? -4 : 0} : {}}>
         <Img
           ref={ref => this.img = ref}
           src={src}
           width={width}
           height={height}
-          style={isSquare ? {marginLeft, marginTop} : {}}
+          style={scaledStyle}
         />
       </Figure>
     )

@@ -1,19 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Image, List } from '../atoms';
 
 
 const ImageList = (props) => {
+  const {
+    // width,
+    // height,
+    horizontal,
+    quality,
+    images
+  } = props;
   return (
       <List
-        data={props.images}
+        horizontal={horizontal}
+        data={images}
         renderItem={({item, index}) => (
           <Image
-            name={item.img}
-            scale={1}
+            quality={quality || item.quality || 'sd'}
+            {...item}
+          />
         )}
       />
   )
 }
 
-export default ResponsiveImage;
+export default ImageList;

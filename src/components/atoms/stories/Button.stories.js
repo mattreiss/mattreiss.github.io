@@ -4,25 +4,13 @@ import { Button } from '..';
 export default { title: 'Button' };
 
 export const withText = () => (
-    <Button
-        onClick={() => console.log("Button Clicked!")}
-        bg="primary">
+    <Button onClick={() => console.log("Button Clicked!")}>
         Hello Button
     </Button>
 );
 
 export const withEmoji = () => (
-  <Button onClick={() => console.log("Button Clicked!")} >
+  <Button onClick={() => console.log("Button Clicked!")} bg="success">
       <span role="img" aria-label="so cool">😀 😎 👍 💯</span>
   </Button>
-);
-
-
-export const withoutAccesibility = () => (
-    <Button
-        onClick={() => console.log("Button Clicked!")}
-        color="primary"
-        bg="primary">
-        Hello Button
-    </Button>
 );
