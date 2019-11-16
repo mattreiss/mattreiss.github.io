@@ -10,7 +10,7 @@ const ImageList = (props) => {
         renderItem={({item, index}) => (
           <Image
             name={item.img}
-            scale={}
+            scale={1}
         )}
       />
   )
