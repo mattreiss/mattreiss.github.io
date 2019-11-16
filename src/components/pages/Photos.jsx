@@ -32,6 +32,41 @@ const ModalImage = styled(Image).attrs(props => ({
   overflow: scroll;
 `;
 
+const Content = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: black;
+`;
+
+const ThumbImage = styled(Image).attrs(props => ({
+  fillHeight: 195,
+  quality: 'sd',
+}))`
+  margin: 2px;
+  border: 1px solid ${p => p.isSelected ? 'green' : 'transparent'};
+`;
+
+const SelectedImage = styled(Image).attrs(props => ({
+  scale: 1,
+  isSquare: false,
+  quality: 'hd'
+}))`
+`;
+
+const FilmStrip = styled.div`
+  width: 100vw;
+  height: 200px;
+  backgroud-color: rgb(23,23,23);
+  overflow-x: scroll;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  & > * {
+    display: inline-flex;
+  }
+`;
+
 class Photos extends React.Component {
   constructor(props) {
     super(props);
@@ -72,18 +107,10 @@ class Photos extends React.Component {
     return this.getPhotoPath().length <= 1;
   }
 
-  renderModalContent() {
-    return (
-      <ModalImage
-        name={this.getPhotoName()}
-        quality="hd"
-      />
-    );
-  }
-
-  renderItems() {
-    let { items } = this.state;
-    let renderedItems = [];
+  renderGrid() {
+    const isModalHidden = this.shouldModalHide();
+    const { items } = this.state;
+    const renderedItems = [];
     // eslint-disable-next-line
     for (let i in items) {
       renderedItems.push(
@@ -98,20 +125,56 @@ class Photos extends React.Component {
     return (
       <Grid>
         {renderedItems}
+        <ModalTemplate
+          hidden={isModalHidden}
+          onClickClose={this.onClickCloseModal}
+          content={!isModalHidden && (
+            <ModalImage
+              name={this.getPhotoName()}
+              quality="hd"
+            />
+          )}
+        />
       </Grid>
     );
   }
 
+  renderFilmStrip() {
+    const { items, selectedItem } = this.state;
+    const renderedItems = [];
+    console.log("selectedItem", selectedItem);
+    // eslint-disable-next-line
+    for (let i in items) {
+      renderedItems.push(
+        <div
+          key={i}
+          onClick={() => this.setState({selectedItem: i})}>
+          <ThumbImage
+            name={items[i]}
+            isSelected={i === selectedItem}
+          />
+        </div>
+      )
+    }
+    return (
+      <Content>
+        {selectedItem && (
+          <SelectedImage
+            name={items[selectedItem]}
+          />
+        )}
+        <FilmStrip>
+          {renderedItems}
+        </FilmStrip>
+      </Content>
+    );
+  }
+
   render() {
-    let isModalHidden = this.shouldModalHide();
+    const { toggleGrid } = this.state;
     return (
       <PageTemplate>
-          {this.renderItems()}
-          <ModalTemplate
-            hidden={isModalHidden}
-            onClickClose={this.onClickCloseModal}
-            content={!isModalHidden && this.renderModalContent()}
-          />
+          {toggleGrid ? this.renderGrid() : this.renderFilmStrip()}
       </PageTemplate>
     )
   }

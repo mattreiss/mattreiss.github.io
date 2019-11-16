@@ -47,7 +47,8 @@ export default class StackerForm extends React.Component {
     }
   }
 
-  onSubmit = () => {
+  onSubmit = (e) => {
+    e.preventDefault();
     const { onSubmit } = this.props;
     const { data } = this.state;
     if (data.action === 'null') data.action = null;

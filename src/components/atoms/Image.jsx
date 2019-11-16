@@ -6,7 +6,7 @@ const Figure = styled.figure`
     width,
     height
   })}
-  overflow: hidden;
+  overflow: ${p => p.overflow};
   margin: 0px;
 `;
 
@@ -77,7 +77,8 @@ class Image extends React.Component {
       className,
       quality,
       name,
-      isSquare
+      isSquare,
+      fillHeight
     } = this.props;
     let {
       width,
@@ -92,6 +93,15 @@ class Image extends React.Component {
       console.log("File Not Found!", `../../assets/jpg/${name}/${quality}.jpg`);
       return <div />
     }
+
+    let squareWidth = this.aspectRatio < 1 ? height : width;
+    let squareHeight = squareWidth;
+
+    if (fillHeight) {
+      width = 'min-content';
+      height = fillHeight;
+      isSquare = false;
+    }
     if (!width || !height) {
       return (
         <Img
@@ -105,8 +115,9 @@ class Image extends React.Component {
     return (
       <Figure
         className={className}
-        width={isSquare ? this.aspectRatio < 1 ? height : width : width}
-        height={isSquare ? this.aspectRatio < 1 ? height : width  : null}
+        width={isSquare ? squareWidth : width}
+        height={isSquare ? squareHeight  : null}
+        overflow={fillHeight ? 'initial' : 'hidden'}
         style={{marginTop: isSquare ? -4 : 0}}>
         <Img
           ref={ref => this.img = ref}
