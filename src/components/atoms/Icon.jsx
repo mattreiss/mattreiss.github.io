@@ -22,7 +22,7 @@ class BaseIcon extends React.Component {
 }
 
 const Icon = styled(BaseIcon).attrs(props => ({
-  size: themedIconSize(props)
+  size: props.theme.iconSize[props.size] || props.size
 }))`
   ${space}
   ${layout}

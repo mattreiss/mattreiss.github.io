@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Api from '../../data/Api';
 import {
-  // Icon,
+  Icon,
   Button,
   Form,
   Input,
@@ -9,9 +10,10 @@ import {
   // Image,
   Section,
   Select,
+  List
 } from '../atoms';
 import {
-  IconButton
+  ImageList
 } from '../molecules';
 
 const BlendMode = {
@@ -29,8 +31,14 @@ const Group = styled(Section)`
   }
 `;
 
+const ListContainer = styled.div`
+  max-height: 300px;
+`;
+
 export default class StackerForm extends React.Component {
   state = {
+    folders: [],
+    files: [],
     data: {
       blendMode: BlendMode.LIGHTEN,
       effect: "commet",
@@ -47,14 +55,34 @@ export default class StackerForm extends React.Component {
     }
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { onSubmit } = this.props;
-    const { data } = this.state;
-    if (data.action === 'null') data.action = null;
-    if (typeof onSubmit === 'function') {
-      onSubmit(data);
+  componentDidMount() {
+    this._mounted = true;
+    this.listDirectory(this.state.data.selectedFolder);
+  }
+
+  listDirectory(directory) {
+    if (!directory || directory === "" || directory.indexOf("/") === -1) {
+      if (directory !== "~") {
+        directory = "/"
+      }
     }
+    Api.list(directory).then(res => {
+      const array = res.data.trim().split(";");
+      const folderString = array[0].replace("folders=", "").trim();
+      const fileString = array[1].replace("files=", "").trim();
+      const folders = folderString.split(",");
+      const files = fileString.split(",").filter(f => f.toLowerCase().endsWith(".jpg"));
+      this._mounted && this.setState({folders, files})
+    })
+  }
+
+  onChangeSelectedFolder(directory) {
+    this.lastChange = Date.now();
+    const timeout = 500;
+    setTimeout(() => {
+      const timeDif = Date.now() - this.lastChange;
+      if (timeDif >= timeout) this.listDirectory(directory);
+    }, timeout)
   }
 
   onChange = (e) => {
@@ -62,17 +90,79 @@ export default class StackerForm extends React.Component {
     const { name, value} = e.target;
     console.log("onChange", name, value);
     data[name] = value;
-    this.setState({data});
+    this.setState({data, folders: [], files: []});
+    if (name === 'selectedFolder') {
+      this.onChangeSelectedFolder(value);
+    }
   }
 
-  onClickFolder = () => {
-    console.log("select folder");
+  onClickFolder = (name) => {
+    const { data } = this.state;
+    const { selectedFolder } = data;
+    let nextFolder = (selectedFolder + "/" + name).replace("//", "/");
+    if (name === "..") {
+      let lastSlash = selectedFolder.lastIndexOf("/");
+      let firstSlash = selectedFolder.indexOf("/");
+      if (lastSlash !== firstSlash) {
+        nextFolder = selectedFolder.substring(0, lastSlash);
+      } else {
+        return;
+      }
+    }
+    data.selectedFolder = nextFolder;
+    this.setState({data, folders: [], files: []});
+    this.onChangeSelectedFolder(nextFolder);
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { data } = this.state;
+    if (data.action === 'null') data.action = null;
+    let formString =  JSON.stringify(data);
+    for (let key in data) {
+      formString = formString.replace('"' + key + '"', key)
+    }
+    Api.runStacker("Stacker", [
+      data.selectedFolder,
+      formString
+    ])
   }
 
   render() {
-    const { data } = this.state;
+    const { data, folders, files } = this.state;
+    folders.unshift("..");
     return (
       <Form>
+        <ListContainer>
+            <List horizontal={true}
+              data={folders}
+              renderItem={({item, index}) => item && item.length > 0 && (
+                <Button
+                  height="80px"
+                  width="80px"
+                  bg="transparent"
+                  color="primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.onClickFolder(item);
+                  }} >
+                  <div>
+                    <Icon
+                      name="Folder"
+                      color="primary"
+                      size="medium"/>
+                  </div>
+                  <div>
+                    {item}
+                  </div>
+                </Button>
+              )}
+            />
+            <ImageList
+              horizontal={true}
+              images={files.map(file => ({src: Api.img(file), isSquare: false, scale: 10}))}
+            />
+        </ListContainer>
         <Group>
           <Label>Selected Folder</Label>
           <Input
@@ -81,11 +171,6 @@ export default class StackerForm extends React.Component {
             name="selectedFolder"
             value={data.selectedFolder}
             onChange={this.onChange}/>
-          <IconButton
-            onClick={this.onClickFolder}
-            name="Folder"
-            color="negative"
-            size="medium"/>
         </Group>
         <Group>
           <Label>Blend Mode</Label>
@@ -112,6 +197,22 @@ export default class StackerForm extends React.Component {
             ]}
             name="effect"
             value={data.effect}
+            onChange={this.onChange}
+          />
+        </Group>
+
+        <Group>
+          <Label>
+            Stack Growth
+          </Label>
+          <Select options={[
+              {value: 1, name: 'Growth'},
+              {value: 2, name: 'Decay'},
+              {value: 3, name: 'Growth & Decay'},
+              {value: 0, name: 'None'},
+            ]}
+            name="stackGrowth"
+            value={data.stackGrowth}
             onChange={this.onChange}
           />
         </Group>
@@ -187,18 +288,6 @@ export default class StackerForm extends React.Component {
             type='number'
             name="stackLength"
             value={data.stackLength}
-            onChange={this.onChange}/>
-        </Group>
-
-        <Group>
-          <Label>
-            Stack Growth
-          </Label>
-          <Input
-            mx="medium"
-            type='number'
-            name="stackGrowth"
-            value={data.stackGrowth}
             onChange={this.onChange}/>
         </Group>
 

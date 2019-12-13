@@ -21,5 +21,5 @@ while true
 do
 	# echo "Auto Indexing... hit [CTRL+C] to stop!"
   yarn index
-  sleep 60
+  sleep 30
 done

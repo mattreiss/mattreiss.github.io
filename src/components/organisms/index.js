@@ -1,5 +1,7 @@
-import Menu from "./Menu";
+import SideBar from "./SideBar";
+import TopBar from "./TopBar";
 
 export {
-    Menu,
+    SideBar,
+    TopBar,
 }

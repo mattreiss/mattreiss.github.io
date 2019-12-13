@@ -11,7 +11,7 @@ Colors.danger = '#FF4C5B';
 Colors.success = '#00BF6F';
 Colors.negative = '#9A9A9F';
 Colors.dark = Colors.gray(32);
-Colors.light = Colors.gray(232);
+Colors.light = Colors.gray(232, 0.5);
 Colors.black = Colors.gray(0);
 Colors.white = Colors.gray(255);
 

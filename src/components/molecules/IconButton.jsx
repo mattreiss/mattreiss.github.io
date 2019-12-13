@@ -22,7 +22,7 @@ class IconButton extends React.Component {
         <Icon
           color={color}
           name={name}
-          size={size}
+          size={size || 'medium'}
         />
       </Button>
     )

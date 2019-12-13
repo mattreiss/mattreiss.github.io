@@ -7,7 +7,6 @@ import {
 } from 'styled-system';
 
 export default styled.button`
-  min-width: 120px;
   height: 40px;
   color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.primary};

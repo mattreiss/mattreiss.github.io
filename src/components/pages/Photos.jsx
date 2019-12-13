@@ -174,7 +174,7 @@ class Photos extends React.Component {
     const { toggleGrid } = this.state;
     return (
       <PageTemplate>
-          {toggleGrid ? this.renderGrid() : this.renderFilmStrip()}
+          {!toggleGrid ? this.renderGrid() : this.renderFilmStrip()}
       </PageTemplate>
     )
   }

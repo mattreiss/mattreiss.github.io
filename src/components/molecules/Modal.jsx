@@ -35,10 +35,6 @@ class Modal extends React.Component {
         className={className}
         hidden={hidden}
         onClick={onClickClose}>
-        <ModalClose
-          onClick={onClickClose}
-          color="white"
-        />
         {children}
       </Container>
     )

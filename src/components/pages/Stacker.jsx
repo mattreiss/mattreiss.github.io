@@ -1,6 +1,5 @@
 import React from 'react';
 import io from 'socket.io-client';
-import Api from '../../data/Api';
 import {
   Section,
   Article,
@@ -34,26 +33,14 @@ class Stacker extends React.Component {
     });
   }
 
-  onSubmitStackerForm(form) {
-    console.log("submit", form);
-    let formString =  JSON.stringify(form);
-    for (let key in form) {
-      formString = formString.replace('"' + key + '"', key)
-    }
-    Api.runStacker("Stacker", [
-      form.selectedFolder,
-      formString
-    ])
-  }
-
   render() {
     return (
       <PageTemplate>
         <Section>
           {this.state.connected ? (
             <Article>
-              <Title textAlign="center">Stacker Options</Title>
-              <StackerForm onSubmit={this.onSubmitStackerForm} />
+              <Title textAlign="center">Stacker</Title>
+              <StackerForm />
             </Article>
           ) : (
             <Article>
