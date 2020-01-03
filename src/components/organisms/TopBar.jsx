@@ -20,7 +20,7 @@ const SettingsButton = styled(IconButton).attrs(props => ({
   justify-content: center;
   align-content: flex-end;
   position: absolute;
-  right: 0;
+  right: ${props => props.theme.space.medium}px;
   width: 48px;
   height: 48px;
 `;
@@ -34,7 +34,6 @@ const MenuButton = styled(IconButton).attrs(props => ({
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  background: ${props => props.open ? props.theme.colors.light : 'tranparent'};
   padding: ${props => props.theme.space.medium}px;
 `;
 

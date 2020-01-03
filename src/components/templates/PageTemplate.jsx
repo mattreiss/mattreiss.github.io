@@ -1,18 +1,26 @@
-import React from 'react';
+ import React from 'react';
 import styled from 'styled-components';
 import { SideBar, TopBar } from '../organisms';
+
+const Row = styled.div`
+  flex: 1;
+  height: 100%;
+  display: flex;
+`;
+
+const Content = styled.div`
+  background-color: ${props => props.theme.colors.light};
+  overflow-y: scroll;
+  flex: 1;
+  height: 100%;
+  padding-bottom: ${p => p.theme.headerHeight}px;
+`;
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.light};
   width: 100%;
   height: 100%;
   position: fixed;
-`;
-const Content = styled.div`
-  background-color: ${props => props.theme.colors.light};
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
 `;
 
 class PageTemplate extends React.Component {
@@ -21,9 +29,7 @@ class PageTemplate extends React.Component {
   }
 
   toggleMenu = () => {
-    this.setState({
-      toggleMenu: !this.state.toggleMenu
-    })
+    this.setState({ toggleMenu: !this.state.toggleMenu })
   }
 
   render() {
@@ -37,8 +43,13 @@ class PageTemplate extends React.Component {
     return (
       <Container>
         <TopBar onToggleMenu={this.toggleMenu}/>
-        <SideBar open={toggleMenu} />
-        <Content>{content}{children}</Content>
+        <Row>
+          <SideBar open={toggleMenu} />
+          <Content>
+            {content}
+            {children}
+          </Content>
+        </Row>
         {footer}
       </Container>
     )

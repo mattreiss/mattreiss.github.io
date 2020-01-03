@@ -5,6 +5,7 @@ import Form from "./Form";
 import Highlight from "./Highlight";
 import Icon from "./Icon";
 import Image from "./Image";
+import Image2 from "./Image2";
 import Input from "./Input";
 import Label from "./Label";
 import Link from "./Link";
@@ -24,6 +25,7 @@ export {
     Highlight,
     Icon,
     Image,
+    Image2,
     Input,
     Label,
     Link,

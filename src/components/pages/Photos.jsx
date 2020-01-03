@@ -20,7 +20,6 @@ const Grid = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  display: inline-block;
   text-decoration: none;
   margin: 0px;
 `;
@@ -116,6 +115,7 @@ class Photos extends React.Component {
       renderedItems.push(
         <StyledLink key={i} to={`${this.mainPath}/${i}`}>
           <ResponsiveImage
+            isSquare
             name={items[i]}
             quality="sd"
           />

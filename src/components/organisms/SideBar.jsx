@@ -13,19 +13,29 @@ import {
   IconButton
 } from '../molecules';
 
+const Title = styled.span`
+  ${p => !p.open && 'display: none;'}
+`;
 
 const Aside = styled.aside`
-  height: 100%;
   width: ${props => props.open ? (props.theme.headerHeight*3) : props.theme.headerHeight}px;
   padding: ${props => props.theme.space.medium}px;
   background: ${props => props.theme.colors.white};
-  position: relative;
   overflow: hidden;
+  ${p => !p.open && media.phone`
+    display: none;
+  `}
+  &:hover {
+    width: ${p => p.theme.headerHeight*3}px;
+  }
+  &:hover ${Title} {
+    display: initial;
+  }
 `;
 
 const Nav = styled.nav`
   $ > * {
-    display: inline-block;
+    display: inline-flex;
   }
 `;
 
@@ -35,14 +45,16 @@ const StyledLink = styled(Link)`
 `;
 
 
+
 class SideBar extends React.Component {
   state = {
     selection: 'Photos'
   }
 
   componentDidMount() {
-    let selection = this.props.location.pathname.substring(1);
+    let selection = this.props.location.pathname;
     if (selection.length <= 1) selection = 'Home';
+    console.log("selection", selection);
     this.setState({selection});
   }
 
@@ -68,13 +80,17 @@ class SideBar extends React.Component {
           color={selection === option.route ? 'primary' : 'negative'}
           fontSize="medium"
           pr="xl">
-          <Icon
-            mr="medium"
-            p="small"
-            name={option.icon}
-            size="medium"
-          />
-          {!open ? '' : option.title}
+          <Nav>
+            <Icon
+              mr="medium"
+              p="small"
+              name={option.icon}
+              size="medium"
+            />
+            <Title open={open}>
+              {option.title}
+            </Title>
+          </Nav>
         </Button>
       </StyledLink>
     ));

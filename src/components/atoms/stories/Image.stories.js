@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from '..';
+import { Image2, Image } from '..';
 
 export default { title: 'Image' };
 
@@ -18,9 +18,10 @@ export const fullResolution = () => (
 
 
 export const customSize = () => (
-    <Image
+    <Image2
       name="mammoth"
       quality="hd"
+      scale={2}
       width={800}
       height={1200}
     />
