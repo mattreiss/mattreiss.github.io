@@ -31,6 +31,11 @@ const Aside = styled.aside`
   &:hover ${Title} {
     display: initial;
   }
+  
+  ${media.phone`
+    position: absolute;
+    height: 100%;
+  `};
 `;
 
 const Nav = styled.nav`

@@ -19,7 +19,6 @@ const SettingsButton = styled(IconButton).attrs(props => ({
   marginBottom: auto;
   justify-content: center;
   align-content: flex-end;
-  position: absolute;
   right: ${props => props.theme.space.medium}px;
   width: 48px;
   height: 48px;
@@ -38,6 +37,16 @@ const MenuButton = styled(IconButton).attrs(props => ({
 `;
 
 const Header = styled.header`
+`;
+
+const Title = styled.h1`
+  color: ${p => p.theme.colors.negative};
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: cursive;
 `;
 
 const Nav = styled.nav`
@@ -112,6 +121,9 @@ class TopBar extends React.Component {
             onClick={this.onClickMenuButton}
             color='negative'
           />
+          <Title>
+            Matt Reiss
+          </Title>
           <SettingsButton
             bg="transparent"
             onClick={this.onClickSettingsButton}
